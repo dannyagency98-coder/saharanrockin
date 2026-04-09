@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saharan Rockin - Exodus of Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons for share popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --podcast-primary-bg: #1a1a1a;
+            --podcast-secondary-bg: #2a2a2a;
+            --podcast-text-color: #e0e0e0; /* Almost white */
+            --podcast-light-text-color: #aaa; /* Lighter grey for meta info */
+            --podcast-link-color: #c933a0;
+            --podcast-border-color: #444; /* General border color */
+            --podcast-subtle-border: rgba(255, 255, 255, 0.08); /* Very light, almost invisible border for tracks */
+            --podcast-button-bg: #444; /* Share button background */
+            --podcast-button-hover-bg: #555;
+            --podcast-main-preview-button-bg: #90ee90; /* Main PREVIEW button background */
+            --podcast-main-preview-button-text: #1a1a1a; /* Dark text for main PREVIEW button */
+            --podcast-dark-element-bg: #2f2f2f; /* Darker background for read buttons */
+            --podcast-button-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for buttons */
+
+            /* Share Popup Specific Colors */
+            --share-popup-bg: #1f1f1f;
+            --share-popup-border: #666;
+            --share-popup-text: #e0e0e0;
+            --share-popup-input-bg: #333;
+            --share-popup-input-border: #555;
+            --share-popup-copy-button-bg: #c933a0;
+            --share-popup-copy-button-text: #1a1a1a;
+            --share-popup-icon-button-bg: #3a3a3a;
+            --share-popup-icon-button-hover-bg: #5a5a5a;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--podcast-primary-bg);
+            color: var(--podcast-text-color);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .podcast-container {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            left: -12px;
+
+}
+        }
+
+        /* Header Navigation */
+        .podcast-header-nav {
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .podcast-header-nav .podcast-nav-link {
+            color: var(--podcast-text-color);
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .podcast-header-nav .podcast-nav-highlight {
+            color: var(--podcast-link-color);
+        }
+
+        .podcast-header-nav span {
+            color: var(--podcast-text-color);
+            margin: 0 5px; /* Adjust spacing around arrows */
+        }
+
+        nav .socials {
+           width: 20em;
+           margin-left: auto;
+           font-size: 1.3em;
+           position: relative;
+        }
+
+        /* Main Content Section */
+        .podcast-main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+
+        }
+
+        .podcast-left-panel {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .podcast-right-panel {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .podcast-title-box {
+            padding: 10px 20px;
+            border-radius: 6px; /* Slightly less rounded to match image */
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--podcast-border-color);
+            background: #2a2a2a;
+        }
+
+        .podcast-title-box h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--podcast-text-color);
+            font-family: monobold,monospace;
+        }
+
+        .podcast-title-box p {
+            margin: 0; /* Remove default margin */
+            padding-top: 5px; /* Add slight top padding for spacing */
+            font-size: 1em;
+            color: var(--podcast-link-color);
+        }
+
+        .podcast-description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95em; /* Slightly smaller font */
+            color: #fff;
+        }
+
+        .podcast-action-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .podcast-action-button {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            cursor: pointer;
+            background: none;
+        }
+
+        .podcast-main-preview-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+        }
+        .podcast-share-button {
+             border: none
+        }
+
+        .podcast-share-button:hover {
+            background-color: var(--podcast-button-hover-bg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .podcast-action-button svg {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .podcast-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            border: 1px solid var(--podcast-border-color);
+        }
+        @media (min-width: 1024px) {
+        .main-content {
+           flex: 1;
+           padding: 10px;
+           padding-top: 0;
+           max-height: 100vh;
+           overflow-y: auto;
+           flex-direction: column;
+           padding-bottom: 5em;
+        }
+    
+        .podcast-container {
+          padding: 10px;
+        }
+    }
+
+        /* Audio Tracks Section */
+        .podcast-audio-tracks-section {
+            margin-top: 40px;
+        }
+
+        .podcast-audio-track {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--podcast-subtle-border);
+            transition: background-color 0.2s ease;
+        }
+
+        .podcast-audio-track:first-child {
+            border-top: 1px solid var(--podcast-subtle-border);
+        }
+
+        .podcast-audio-track:hover {
+            background-color: var(--podcast-secondary-bg);
+        }
+
+        .podcast-track-details {
+            flex-grow: 1;
+            margin-right: 20px;
+        }
+
+        .podcast-track-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 0;
+            color: var(--podcast-text-color);
+        }
+
+        .podcast-track-meta {
+            font-size: 0.9em;
+            color: var(--podcast-light-text-color);
+            margin-top: 5px;
+        }
+
+        .podcast-track-meta span {
+            margin-right: 15px;
+        }
+
+        .podcast-track-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .podcast-read-button {
+            background-color: #cb07ab;
+            color: var(--podcast-text-color);
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            border: 1px solid var(--podcast-border-color);
+            box-shadow: var(--podcast-button-shadow);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            position: relative;
+            cursor: pointer;
+        }
+        .podcast-read-button:hover {
+            text-decoration: none;
+        }
+
+        .podcast-read-button:hover {
+            background-color: var(--podcast-button-hover-bg);
+        }
+
+        .podcast-read-button svg {
+            margin-right: 5px;
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* New Share Button for Tracks */
+        .podcast-share-track-button {
+            background-color: var(--podcast-dark-element-bg);
+            color: var(--podcast-text-color);
+            width: 32px; /* Fixed width for circle */
+            height: 32px; /* Fixed height for circle */
+            border-radius: 2px; /* Make it a circle */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid var(--podcast-border-color);
+            box-shadow: var(--podcast-button-shadow);
+            padding: 0; /* Remove default padding */
+        }
+
+        .podcast-share-track-button:hover {
+            background-color: var(--podcast-button-hover-bg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .podcast-share-track-button svg {
+            width: 18px; /* Icon size within the circle */
+            height: 18px;
+            fill: currentColor;
+            margin: 0; /* Remove margin as it's a standalone icon */
+        }
+
+        /* PDF Viewer Modal Styles */
+        .pdf-viewer-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center; /* Ensures content is centered when displayed */
+            align-items: center; /* Ensures content is centered when displayed */
+        }
+
+        .pdf-viewer-content {
+            position: relative;
+            background-color: var(--podcast-secondary-bg);
+            margin: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            width: 90%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pdf-viewer-close {
+            color: var(--podcast-text-color);
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .pdf-viewer-close:hover,
+        .pdf-viewer-close:focus {
+            color: var(--podcast-link-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .pdf-viewer-iframe {
+            flex-grow: 1;
+            border: none;
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        /* Share Popup Styles */
+        .share-popup-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85); /* Slightly less opaque than PDF modal */
+            justify-content: center;
+            transition: opacity 0.2s ease;
+            align-items: center;
+        }
+
+        .share-popup-content {
+            background: var(--share-popup-bg);
+            color: var(--share-popup-text);
+            border: 1px solid var(--share-popup-border);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 400px; /* Limit width for better appearance */
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-family: 'Inter', sans-serif; /* Ensure Inter font for the popup */
+        }
+
+        .share-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--podcast-subtle-border);
+        }
+
+        .share-header p {
+            margin: 0;
+        }
+
+        .share-close {
+            background: none;
+            border: none;
+            color: var(--share-popup-text);
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+            border-radius: 4px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .share-close:hover {
+            background-color: var(--podcast-button-hover-bg);
+            color: var(--podcast-link-color);
+        }
+
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 10px;
+        }
+
+        .share-options button {
+            background-color: var(--share-popup-icon-button-bg);
+            color: var(--share-popup-text);
+            border: 1px solid var(--share-popup-input-border);
+            border-radius: 6px;
+            padding: 10px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: var(--podcast-button-shadow);
+        }
+
+        .share-options button:hover {
+            background-color: var(--share-popup-icon-button-hover-bg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .share-options button i {
+            font-size: 2em;
+            margin-bottom: 5px;
+            color: var(--podcast-link-color); /* Icons in light green */
+        }
+
+        .share-options button p {
+            margin: 0;
+        }
+
+        .share-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .share-input input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--share-popup-input-border);
+            background-color: var(--share-popup-input-bg);
+            color: var(--share-popup-text);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            outline: none;
+        }
+
+        .share-input input:focus {
+            border-color: var(--podcast-link-color);
+            box-shadow: 0 0 0 2px rgba(144, 238, 144, 0.2);
+        }
+
+        #copyShare {
+            background-color: var(--share-popup-copy-button-bg);
+            color: var(--share-popup-copy-button-text);
+            border: none;
+            border-radius: 6px;
+            padding: 10px 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: var(--podcast-button-shadow);
+        }
+
+        #copyShare:hover {
+            background-color: #c933a0; /* Slightly darker green on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .podcast-main-content {
+                flex-direction: column;
+            }
+
+            .podcast-right-panel {
+                justify-content: center;
+                display: none; /* Hide image panel on small screens for better content focus */
+            }
+
+            .podcast-title-box h1 {
+                font-size: 1.8em;
+            }
+
+            .podcast-audio-track {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 15px;
+            }
+
+            .podcast-track-details {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+
+            .podcast-track-buttons {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .podcast-read-button {
+                flex-grow: 1;
+                justify-content: center;
+            }
+
+            .pdf-viewer-content {
+                margin: 10px;
+                width: calc(100% - 20px);
+                height: calc(100% - 20px);
+            }
+
+            .share-options {
+                grid-template-columns: 1fr; /* Single column on very small screens */
+            }
+        }
+        .podcast-audio-tracks-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+            color: #fff; 
+        }
+    </style>
+</head>
+<body>
+ 
+
+<div id="iframe-container" style="display:none;"></div>
+
+  <style>
+.mobile-footer {
+background: #0a0a0a;
+color: #c8c8c8;
+text-align: center;
+padding: 2em 0;
+display: none;
+}
+.mobile-footer h2 {
+color: #fff;
+}
+@media(max-width: 46em) {
+.mobile-footer {
+display: block !important;
+}
+.podcast-container {
+    width: 100% !important;
+}
+ }
+h1 {
+font-weight: bold !important;
+}
+button {
+font-size: 12px;
+font-weight: bold;
+}
+</style>
+ <style>
+.sr-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  padding: 16px;
+}
+.sr-overlay.sr-active { opacity: 1; pointer-events: all; }
+
+.sr-box {
+  background: #050206;
+  border: 2px solid #555;
+  border-radius: 0;
+  max-width: 800px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 6px 6px #808080;
+}
+
+.sr-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 12px;
+  background: #2600e6;
+  font-family: inherit;
+}
+.sr-header-left { display: flex; align-items: center; gap: 8px; }
+
+.sr-tag {
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.sr-chapter-id {
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 380px;
+}
+.sr-close {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c0c0c0;
+    border: 2px solid #000;
+    color: #333;
+}
+.sr-close:hover {
+  opacity: 0.8;
+}
+.sr-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #08000e;
+  overflow: hidden;
+}
+.sr-stage iframe,
+.sr-stage video,
+.sr-stage img.sr-media-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: none;
+  object-fit: contain;
+}
+.sr-stage img.sr-media-img { object-fit: contain; background: #000; }
+
+.sr-loader {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 14px;
+  background: #08000e;
+  z-index: 4;
+  transition: opacity 0.3s ease;
+}
+.sr-loader.sr-gone { opacity: 0; pointer-events: none; }
+
+.sr-stripe-bar {
+  display: flex !important;
+  width: 140px; height: 10px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    -45deg,
+    #aaaaaa 0px, #aaaaaa 10px,
+    #222 10px, #222 20px
+  );
+  background-size: 200% 100%;
+  animation: stripe-slide 0.8s linear infinite;
+}
+@keyframes stripe-slide {
+  0%   { background-position: 0 0 }
+  100% { background-position: 56px 0 }
+}
+
+.sr-loader-label {
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.sr-dot {
+  display: inline-block;
+  animation: sr-dot-bounce 1.2s ease-in-out infinite;
+  font-size: 16px;
+  line-height: 1;
+}
+.sr-dot:nth-child(2) { animation-delay: 0.2s; }
+.sr-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes sr-dot-bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40%           { transform: translateY(-5px); }
+}
+
+.sr-state {
+  position: absolute; inset: 0;
+  display: none;
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; text-align: center; padding: 24px;
+}
+.sr-state.sr-on { display: flex; }
+.sr-empty-ring {
+  width: 46px; height: 46px;
+  border: 2px solid white;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 18px;
+}
+.sr-empty-title {
+  font-family: inherit;
+  font-size: 16px; font-weight: bold;
+  color: #fff; letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.sr-empty-sub {
+  font-family: inherit;
+  font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: #999;
+}
+
+.sr-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-top: 1px solid #333;
+  background: #050206;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sr-footer-title {
+  font-family: inherit;
+  font-size: 14px; font-weight: bold;
+  color: #fff;
+  flex: 1; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.sr-footer-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.sr-btn {
+  font-size: 12px; font-weight: bold;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 8px;
+  border: 1px solid #555; border-radius: 0;
+  background: #9c9c9c; color: black;
+  cursor: pointer; transition: background 0.15s;
+}
+.sr-btn:hover { background: rgb(127, 127, 127); }
+.sr-btn.sr-btn-hot {
+  border-color: #2600e6; background: #2600e6; color: #fff;
+}
+.sr-btn.sr-btn-hot:hover { background: #3d14ff; border-color: #3d14ff; }
+</style>
+
+<div class="sr-overlay" id="srPreviewModal">
+  <div class="sr-box">
+
+    <div class="sr-header">
+      <div class="sr-header-left">
+        <span class="sr-tag">▶ PREVIEW</span>
+        <span class="sr-chapter-id" id="srChapterId"></span>
+      </div>
+      <button class="sr-close" id="srCloseBtn">X</button>
+    </div>
+
+    <div class="sr-stage" id="srStage">
+      <div class="sr-loader" id="srLoader">
+        <div class="sr-stripe-bar"></div>
+        <span class="sr-loader-label">
+          LOADING PREVIEW
+          <span class="sr-dot">.</span>
+          <span class="sr-dot">.</span>
+          <span class="sr-dot">.</span>
+        </span>
+      </div>
+
+      <div class="sr-state" id="srStateEmpty">
+        <div class="sr-empty-ring">X</div>
+        <div class="sr-empty-title">NO PREVIEW AVAILABLE</div>
+      </div>
+    </div>
+
+    <div class="sr-footer">
+      <div class="sr-footer-title" id="srModalTitle">—</div>
+      <div class="sr-footer-actions">
+        <button class="sr-btn" id="srFooterClose">CLOSE</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+    <div class="podcast-container">
+      <div class="navigation-indicator" style="display: flex; align-items: center; gap: 8px; font-family: sans-serif; color: #333;">
+        <p class="root" style="color: deeppink; font-weight: bold;">Saharan rockin</p>
+        <p style="color: #666;">&#x2192;</p>
+        <p>Read</p>
+        <p style="color: #666;">&#x2192;</p>
+        <p>Episodes</p>
+      </div>
+        <!-- Main Content Section -->
+        <div class="podcast-main-content">
+            <div class="podcast-left-panel">
+                <div class="podcast-title-box">
+               <h1>Exodus of Time Chapters <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_red.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 40px; width: 40px; vertical-align: middle; display: inline;"></h1>
+                        </div>
+                <p class="podcast-description">
+                    Exodus of Time is a sci-fi manga series by Drake aka "cactus guts".
+                    Set on the desert planet E-77, it follows Gero and Rae as they
+                    uncover psychic conspiracies, ancient prophecies, and the legend of
+                    the Eyes a force that can alter timelines. Fueled by chaos and
+                    survival, each chapter spirals deeper into the cosmic unknown.
+                </p>
+<div class="podcast-action-buttons">
+    <!-- Preview Button - Opens Chapter 1 but won't appear in chapter list -->
+    <button class="podcast-read-button preview-chapter" 
+            style="background-color: transparent; border: none; flex-grow: 0; padding: 0;"
+            data-series-title="DREAMING AND SCHEMING"
+            data-manga-images='[
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354985/updatedch01_01_qnyq5l.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354954/updatedch01_02_x4e8uw.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354865/updatedch01_03_xxdxy0.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354924/updatedch01_04_wrrb7w.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774442607/updatedch01_05_a4vx17.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354908/updatedch01_06_fgp86e.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354953/updatedch01_07_zyzgqt.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354842/updatedch01_08_ci9ep7.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354859/updatedch01_09_j9ctan.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354880/updatedch01_010_bnkoec.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354860/updatedch01_011_yegcit.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354954/updatedch01_012_fx4ro2.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354833/updatedch01_013_w2noch.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354849/updatedch01_014_jhkicu.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354974/updatedch01_015_usb660.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354993/updatedch01_016_yus8hq.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354991/updatedch01_017_s5dt6n.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774355277/updatedch01_018_sxwvln.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354875/updatedch01_019_wdr5rw.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354940/updatedch01_020_umaxee.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354964/updatedch01_021_thnz1x.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354853/updatedch01_022_atmqzl.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354920/updatedch01_023_d90uyt.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354915/updatedch01_024_c8bpno.png"
+  ]'
+       data-manga-gifs='[
+    "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/hotline.gif?v=1752459778",
+    "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/hotline.gif?v=1752459778",
+    "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1773331510"
+  ]'>
+      <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_83cb3165-6121-4a66-9cff-7e338a68c037.png?v=1756264422" 
+           alt="Preview" 
+           class="action-icon">
+    </button>
+
+
+<!-- Share Button -->
+<button type="button" class="podcast-action-button podcast-share-button" style="background-color: transparent; border: none;" id="mainShareButton">
+  <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/sharebutton.png?v=1756408269" 
+       alt="Share" class="action-icon">
+</button>
+  </div>
+    </div>
+  <style>
+.action-icon {
+    width: 120px;
+    height: 38px;
+    display: block;
+    pointer-events: none; /* keeps clicks on the button, not the image */
+}
+</style>
+
+            <div class="podcast-right-panel">
+                <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628" alt="Exodus of Time manga panel - Gero vs Cyclops fight" class="podcast-image">
+            </div>
+  </div>
+
+        <!-- Audio Tracks Section -->
+        <div class="podcast-audio-tracks-section">
+<style>
+  @font-face {
+    font-family: 'Akira Expanded';
+    src: url('https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Akira_Expanded_Demo.otf?v=1766474978') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+</style>
+<h2 style="font-family: 'Akira Expanded', sans-serif;">Chapters</h2><br>
+            <!-- Track 1 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#001 Dreaming and Scheming <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_red.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>3-21-26</span>
+                        <span>24 Pages</span>
+                    </div>
+                </div>
+<!-- READ Button -->
+<div class="podcast-track-buttons">
+     <button
+  class="podcast-read-button"
+  data-video=""
+  data-title="DREAMING AND SCHEMING INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+
+
+<button class="podcast-read-button"
+  data-series-title="DREAMING AND SCHEMING"
+  data-manga-images='[
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354985/updatedch01_01_qnyq5l.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354954/updatedch01_02_x4e8uw.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354865/updatedch01_03_xxdxy0.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354924/updatedch01_04_wrrb7w.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774442607/updatedch01_05_a4vx17.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354908/updatedch01_06_fgp86e.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354953/updatedch01_07_zyzgqt.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354842/updatedch01_08_ci9ep7.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354859/updatedch01_09_j9ctan.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354880/updatedch01_010_bnkoec.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354860/updatedch01_011_yegcit.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354954/updatedch01_012_fx4ro2.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354833/updatedch01_013_w2noch.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354849/updatedch01_014_jhkicu.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354974/updatedch01_015_usb660.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354993/updatedch01_016_yus8hq.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354991/updatedch01_017_s5dt6n.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774355277/updatedch01_018_sxwvln.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354875/updatedch01_019_wdr5rw.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354940/updatedch01_020_umaxee.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354964/updatedch01_021_thnz1x.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354853/updatedch01_022_atmqzl.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354920/updatedch01_023_d90uyt.png",
+    "https://res.cloudinary.com/dyu69zz6k/image/upload/v1774354915/updatedch01_024_c8bpno.png"
+  ]'
+     data-manga-gifs='[
+    "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/hotline.gif?v=1752459778",
+    "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/hotline.gif?v=1752459778",
+    "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1773331510"
+  ]'>
+
+  <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" 
+       alt="Read" class="read-icon">
+  READ
+</button>
+
+<style>
+.read-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+
+<button class="podcast-share-track-button" 
+        data-file-link="https://saharanrockin.com">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+      cursor: pointer;
+    pointer-events: none; /* clicks register on the button */
+}
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+ </div>
+ </div>
+            <!-- Track 2 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#002 Goodbye Everything  <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_red.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+                <div class="podcast-track-buttons">
+              <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="GOODBYE EVERYTHING INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+<button class="podcast-read-button"
+  data-series-title="GOODBYE EVERYTHING"
+  data-manga-images='/'>
+  <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370"
+       alt="Read" class="read-icon">
+  READ
+</button>
+
+
+<style>
+ img[src*="cloudinary.com/dyu69zz6k"] {
+  transform: scale(1.11);
+  transform-origin: center;
+  clip-path: inset(4% 7%);
+}
+.read-icon {
+    width: 20px;
+    height: 20px;
+      cursor: pointer;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+
+<button class="podcast-share-track-button" 
+        data-file-link="https://saharanrockin.com">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    pointer-events: none; /* clicks register on the button */
+}
+
+</style>
+                </div>
+            </div>
+ </div>
+             <!-- Track 3 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#003 Fight Night (Gero vs Cyclops)  <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_red.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<div class="podcast-track-buttons">
+       <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="FIGHT NIGHT(GERO VS CYCLOPS) INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+<style>
+.read-icon {
+    width: 20px;
+      cursor: pointer;
+    height: 20px;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+<button class="podcast-share-track-button" 
+        data-file-link="#">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+    pointer-events: none; /* clicks register on the button */
+}
+
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+                </div>
+            </div>
+
+
+
+                         <!-- Track 3 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#004 Desert Anguish   <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_red.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<div class="podcast-track-buttons">
+      <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="DESERT ANGUISH INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+<style>
+.read-icon {
+    width: 20px;
+      cursor: pointer;
+    height: 20px;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+<button class="podcast-share-track-button" 
+        data-file-link="#">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+    pointer-events: none; /* clicks register on the button */
+}
+
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+                </div>
+            </div>
+
+
+                         <!-- Track 3 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#005 The Dawn Initiator  <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_red.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<div class="podcast-track-buttons">
+      <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="THE DAWN INITIATOR INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+<style>
+.read-icon {
+    width: 20px;
+      cursor: pointer;
+    height: 20px;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+<button class="podcast-share-track-button" 
+        data-file-link="#">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+    pointer-events: none; /* clicks register on the button */
+}
+
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+                </div>
+            </div>
+                            <!-- Audio Tracks Section -->
+        <div class="podcast-audio-tracks-section">
+<style>
+  @font-face {
+    font-family: 'Akira Expanded';
+    src: url('https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Akira_Expanded_Demo.otf?v=1766474978') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+</style>
+
+<h2 style="font-family: 'Akira Expanded', sans-serif; text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; margin-bottom: 0;">Monolith Gateway Arc</h2><br>
+               <p class="podcast-description">
+Here's the game! We're stuck in this desolate, perpetual, haunted, forest. Why do I still breathe? I don't think I have the courage to initiate my own end. But given our circumstances it's only a matter of time. There's these sick sadistic "people" if you can call them that. They are so obsessed with this thing called the "Monolith Gateway." This magical structure that can grant all our problems away, seems like a load of horseshit but ill do anything to get out of this forsaken place. - Rae
+               </p>
+            <!-- Track 1 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#006 Princess, Virgin & Road Kill <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_green.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<!-- READ Button -->
+<div class="podcast-track-buttons">
+       <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="PRINCESS, VIRGINS & ROAD KILL INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+
+<style>
+.read-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+
+<button class="podcast-share-track-button" 
+        data-file-link="https://saharanrockin.com">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+      cursor: pointer;
+    pointer-events: none; /* clicks register on the button */
+}
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+ </div>
+ </div>
+            <!-- Track 2 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#007 In the valley of dead vines & marigolds <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_green.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+                <div class="podcast-track-buttons">
+              <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="VALLEY OF DEAD VINES & MARIGOLDS INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+
+<style>
+.read-icon {
+    width: 20px;
+    height: 20px;
+      cursor: pointer;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+
+<button class="podcast-share-track-button" 
+        data-file-link="https://saharanrockin.com">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    pointer-events: none; /* clicks register on the button */
+}
+
+</style>
+                </div>
+            </div>
+ </div>
+            <!-- Track 3 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#008 Rae's Ye's Gate Trip <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_green.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<div class="podcast-track-buttons">
+        <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="RAE'S YE'S GATE TRIP INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+<style>
+.read-icon {
+    width: 20px;
+      cursor: pointer;
+    height: 20px;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+<button class="podcast-share-track-button" 
+        data-file-link="#">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+    pointer-events: none; /* clicks register on the button */
+}
+
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+                </div>
+            </div>
+            <!-- Track 1 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#009 Oracles Revelation <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_green.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<!-- READ Button -->
+<div class="podcast-track-buttons">
+        <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="ORACLES REVELATION INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+
+<style>
+.read-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+
+<button class="podcast-share-track-button" 
+        data-file-link="https://saharanrockin.com">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+      cursor: pointer;
+    pointer-events: none; /* clicks register on the button */
+}
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+ </div>
+ </div>
+
+
+
+             <!-- Track 1 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#010 A Angels First Sin <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_green.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<!-- READ Button -->
+<div class="podcast-track-buttons">
+         <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="ANGELS FIRST SIN INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+
+<style>
+.read-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+
+<button class="podcast-share-track-button" 
+        data-file-link="https://saharanrockin.com">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+      cursor: pointer;
+    pointer-events: none; /* clicks register on the button */
+}
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+ </div>
+ </div>
+
+
+             <!-- Track 1 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#011 Find Pharaohs Key! <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_green.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<!-- READ Button -->
+<div class="podcast-track-buttons">
+         <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="FIND PHARAOHS INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+
+<style>
+.read-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+
+<button class="podcast-share-track-button" 
+        data-file-link="https://saharanrockin.com">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+      cursor: pointer;
+    pointer-events: none; /* clicks register on the button */
+}
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+ </div>
+ </div>
+
+             <!-- Track 1 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#012 Weapons of mass destruction <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_green.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<!-- READ Button -->
+<div class="podcast-track-buttons">
+         <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="ANGELS FIRST SIN INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+
+<style>
+.read-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+
+<button class="podcast-share-track-button" 
+        data-file-link="https://saharanrockin.com">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+      cursor: pointer;
+    pointer-events: none; /* clicks register on the button */
+}
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+ </div>
+ </div>
+
+
+             <!-- Track 1 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#013 Pandora's box <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_green.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<!-- READ Button -->
+<div class="podcast-track-buttons">
+         <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="ANGELS FIRST SIN INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+
+<style>
+.read-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+
+<button class="podcast-share-track-button" 
+        data-file-link="https://saharanrockin.com">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+      cursor: pointer;
+    pointer-events: none; /* clicks register on the button */
+}
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+ </div>
+ </div>
+
+
+             <!-- Track 1 -->
+            <div class="podcast-audio-track">
+                <div class="podcast-track-details">
+                    <h3 class="podcast-track-title">#014 The Monolith Gateaway <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_green.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 30px; width: 30px; vertical-align: middle; display: inline;"></h1></h3>
+                    <div class="podcast-track-meta">
+                        <span>---</span>
+                        <span>0 Pages</span>
+                    </div>
+                </div>
+<!-- READ Button -->
+<div class="podcast-track-buttons">
+         <button
+  class="podcast-read-button"
+  data-video="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/read.gif?v=1752459628"
+  data-title="ANGELS FIRST SIN INTRO"
+  data-id="srPreviewModal">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/images-removebg-preview.png?v=1774475279"
+    alt="Preview"
+    class="read-icon">
+  PREVIEW
+</button>
+    <button class="podcast-read-button" data-file="/">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_5.png?v=1756267370" alt="Read" class="read-icon">
+        READ
+    </button>
+
+<style>
+.read-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 6px; /* space between icon and text */
+    vertical-align: middle;
+}
+</style>
+
+<button class="podcast-share-track-button" 
+        data-file-link="https://saharanrockin.com">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_4.png?v=1756264420" 
+         alt="Share" class="share-icon">
+</button>
+<style>
+.share-icon {
+    width: 30px;
+    height: 33px;
+    display: block;
+      cursor: pointer;
+    pointer-events: none; /* clicks register on the button */
+}
+.podcast-share-track-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+</style>
+ </div>
+ </div>
+   </div>
+
+
+   
+
+
+
+
+    <!-- PDF Viewer Modal -->
+    <div id="pdfViewerModal" class="pdf-viewer-modal">
+        <div class="pdf-viewer-content">
+            <span class="pdf-viewer-close">&times;</span>
+            <iframe id="pdfViewerIframe" class="pdf-viewer-iframe" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <!-- Share Popup Modal -->
+    <div id="sharePopupModal" class="share-popup-modal">
+        <div class="share-popup-content">
+            <div class="share-header">
+                <p>SHARE</p>
+                <button class="share-close">&times;</button>
+            </div>
+            <div class="share-options">
+                <button data-share="whatsapp">
+                    <i class="bi bi-whatsapp"></i>
+                    <p>Whatsapp</p>
+                </button>
+                <button data-share="twitter">
+                    <i class="bi bi-twitter-x"></i>
+                    <p>X</p>
+                </button>
+                <button data-share="facebook">
+                    <i class="bi bi-facebook"></i>
+                    <p>Facebook</p>
+                </button>
+                <button data-share="reddit">
+                    <i class="bi bi-reddit"></i>
+                    <p>Reddit</p>
+                </button>
+            </div>
+            <div class="share-input">
+                <input type="text" readonly="true" id="shareLinkInput">
+                <button id="copyShare">COPY</button>
+            </div>
+        </div>
+    </div>
+
+<div class="mobile-footer">
+<div class="flex">
+<a href="/">Privacy</a>
+<a href="/">TOS</a>
+<a href="/">Help</a>
+</div>
+<p style="color: #fff; text-align: center; font-size: .8em">
+  &copy; <span id="currentYear"></span> Saharan Rockin LLC, All rights reserved
+</p>
+
+<script>
+  const year = new Date().getFullYear();
+  document.getElementById('currentYear').textContent = year;
+  console.log("Current year:", year);
+</script>
+<div class="socials">
+<a href="https://www.instagram.com/saharanrockin/"><i class="bi bi-instagram"></i></a>
+<a href="https://www.youtube.com/@saharanrockin"><i class="bi bi-youtube"></i></a>
+<a href="https://saharanrockin.newgrounds.com/"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/png-transparent-newground-icon-portal-newgrounds-logo-website-music-tank-ico-angle-monochrome-sports-equipment-removebg-preview.png?v=1752170018" style="width: 2em"></a>
+<a href="https://x.com/saharanrockin"><i class="bi bi-twitter"></i></a>
+<a href="https://www.tiktok.com/@saharanrockin"><i class="bi bi-tiktok"></i></a>
+</div>
+ </div>
+
+<script>
+  // === Share Popup ===
+  const mainShareButton = document.getElementById('mainShareButton');
+  const sharePopupModal = document.getElementById('sharePopupModal');
+  const sharePopupClose = sharePopupModal.querySelector('.share-close');
+  const shareLinkInput = document.getElementById('shareLinkInput');
+  const copyShareButton = document.getElementById('copyShare');
+  const socialShareButtons = sharePopupModal.querySelectorAll('.share-options button');
+
+  let currentShareLink = '';
+
+  const openSharePopup = (link) => {
+    currentShareLink = link;
+    shareLinkInput.value = link;
+    sharePopupModal.style.display = 'flex';
+    sharePopupModal.classList.add('active');
+  };
+
+  const closeSharePopup = () => {
+    sharePopupModal.style.display = 'none';
+    sharePopupModal.classList.remove('active');
+    currentShareLink = '';
+    shareLinkInput.value = '';
+  };
+
+  mainShareButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openSharePopup(window.location.href);
+  });
+
+  // Event delegation for track bt = 'COPIED!';
+      setTimeout(() => (copyShareButton.textContent = 'COPY'), 2000);
+    } catch (err) {
+      console.error('Copy failed:', err);
+    }
+  });
+
+  socialShareButtons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const shareType = btn.dataset.share;
+      const title = document.title;
+      const text = 'Check out this chapter from Exodus of Time!';
+      if (!currentShareLink) currentShareLink = window.location.href;
+
+      const encoded = encodeURIComponent;
+      const shareUrl = {
+        whatsapp: `https://wa.me/?text=${encoded(text + ' ' + currentShareLink)}`,
+        twitter: `https://twitter.com/intent/tweet?text=${encoded(text)}&url=${encoded(currentShareLink)}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encoded(currentShareLink)}`,
+        reddit: `https://www.reddit.com/submit?url=${encoded(currentShareLink)}&title=${encoded(title)}`
+      }[shareType];
+
+      if (shareUrl) window.open(shareUrl, '_blank');
+      closeSharePopup();
+    })
+  );
+
+  // Listen for Firebase event (from theme.liquid)
+  document.addEventListener('openSharePopup', (e) => {
+    openSharePopup(e.detail.link);
+  });
+});
+</script>
+<script>
+/* === EVENT LISTENERS from theme.liquid === */
+document.addEventListener("openSharePopup", (e) => {
+  const link = e.detail.link || window.location.href;
+  const sharePopupModal = document.getElementById('sharePopupModal');
+  const shareLinkInput = document.getElementById('shareLinkInput');
+
+  if (sharePopupModal && shareLinkInput) {
+    shareLinkInput.value = link;
+    sharePopupModal.style.display = 'flex';
+  }
+});
+
+document.addEventListener("openPdfViewer", (e) => {
+  const pdfUrl = e.detail.link;
+  const modal = document.getElementById('pdfViewerModal');
+  const iframe = document.getElementById('pdfViewerIframe');
+  if (modal && iframe) {
+    iframe.src = pdfUrl;
+    modal.style.display = 'flex';
+  }
+});
+
+document.addEventListener("closePdfViewer", () => {
+  const modal = document.getElementById('pdfViewerModal');
+  const iframe = document.getElementById('pdfViewerIframe');
+  if (modal && iframe) {
+    iframe.src = '';
+    modal.style.display = 'none';
+  }
+});
+</script>
+ <!-- =============================================
+     SCRIPT
+============================================= -->
+
+
+<script>
+(function () {
+  function srGetModal()  { return document.getElementById('srPreviewModal'); }
+  function srGetLoader() { return document.getElementById('srLoader'); }
+  function srGetEmpty()  { return document.getElementById('srStateEmpty'); }
+  function srGetStage()  { return document.getElementById('srStage'); }
+  function srGetTitle()  { return document.getElementById('srModalTitle'); }
+
+  function srClose() {
+    const modal = srGetModal();
+    if (!modal) return;
+    modal.classList.remove('sr-active');
+    document.body.style.overflow = '';
+    // Remove any injected media
+    const existing = modal.querySelector('.sr-live-media');
+    if (existing) existing.remove();
+  }
+
+  function srOpen(url, title) {
+    const modal   = srGetModal();
+    const loader  = srGetLoader();
+    const empty   = srGetEmpty();
+    const stage   = srGetStage();
+    const titleEl = srGetTitle();
+    const chapterId = document.getElementById('srChapterId');
+
+    if (!modal || !stage) return;
+
+    // Reset state
+    const existing = stage.querySelector('.sr-live-media');
+    if (existing) existing.remove();
+    loader.classList.remove('sr-gone');
+    empty.classList.remove('sr-on');
+    if (titleEl) titleEl.textContent = title || '—';
+    if (chapterId) chapterId.textContent = title || '';
+
+    modal.classList.add('sr-active');
+    document.body.style.overflow = 'hidden';
+
+    if (!url) {
+      loader.classList.add('sr-gone');
+      empty.classList.add('sr-on');
+      return;
+    }
+
+    // Detect media type
+    const urlLower = url.toLowerCase().split('?')[0];
+    const isImage  = /\.(png|jpe?g|webp|gif)$/.test(urlLower);
+    const isVideo  = /\.(mp4|webm|ogg|mov)$/.test(urlLower);
+    const isYT     = /youtu\.?be/.test(url);
+
+    if (isImage) {
+      const img = document.createElement('img');
+      img.className = 'sr-live-media sr-media-img';
+      img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;display:none;';
+      img.onload = () => { loader.classList.add('sr-gone'); img.style.display = 'block'; };
+      img.onerror = () => { loader.classList.add('sr-gone'); empty.classList.add('sr-on'); };
+      img.src = url;
+      stage.appendChild(img);
+
+    } else if (isVideo) {
+      const vid = document.createElement('video');
+      vid.className = 'sr-live-media';
+      vid.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none;';
+      vid.controls = true;
+      vid.autoplay = true;
+      vid.oncanplay = () => { loader.classList.add('sr-gone'); vid.style.display = 'block'; };
+      vid.onerror   = () => { loader.classList.add('sr-gone'); empty.classList.add('sr-on'); };
+      const src = document.createElement('source');
+      src.src = url;
+      vid.appendChild(src);
+      stage.appendChild(vid);
+
+    } else {
+      // YouTube or any iframe-embeddable URL
+      const iframe = document.createElement('iframe');
+      iframe.className = 'sr-live-media';
+      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;display:none;';
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allowFullscreen = true;
+
+      let embedUrl = url;
+      if (isYT) {
+        const match = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/);
+        if (match) embedUrl = 'https://www.youtube.com/embed/' + match[1] + '?autoplay=1';
+      }
+
+      iframe.onload = () => { loader.classList.add('sr-gone'); iframe.style.display = 'block'; };
+      iframe.src = embedUrl;
+      stage.appendChild(iframe);
+    }
+  }
+
+  // Expose globals for inline onclick fallbacks
+  window.srClose = srClose;
+  window.srHandleOverlay = function (e) {
+    if (e.target === srGetModal()) srClose();
+  };
+
+  // Click delegation — open
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.podcast-read-button[data-id="srPreviewModal"]');
+    if (btn) {
+      e.preventDefault();
+      srOpen(btn.dataset.video || '', btn.dataset.title || 'Preview');
+      return;
+    }
+
+    // Close via X button or footer CLOSE
+    if (e.target.closest('#srCloseBtn') || e.target.closest('#srFooterClose')) {
+      srClose();
+      return;
+    }
+
+    // Close clicking backdrop
+    const modal = srGetModal();
+    if (modal && e.target === modal) srClose();
+  });
+
+  // Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') srClose();
+  });
+})();
+</script>
+<script>
+window.srOnLoad = function () {
+  const loader = document.getElementById('srLoader');
+  const iframe  = document.getElementById('srIframe');
+  if (loader) loader.classList.add('sr-gone');
+  if (iframe) iframe.style.display = 'block';
+};
+
+window.srHandleOverlay = function (e) {
+  if (e.target === document.getElementById('srPreviewModal')) {
+    window.srClose();
+  }
+};
+
+window.srAction = function () {
+  const btn = document.getElementById('srActionBtn');
+  const link = btn && btn.dataset.link;
+  if (link) window.open(link, '_blank');
+};
+</script>
+</body>
+</html>

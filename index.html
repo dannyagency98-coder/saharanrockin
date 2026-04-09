@@ -1,0 +1,1943 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<script src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/shopify_form_lazyload.js?v=1757360237"defer"></script>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Doto:wght@900&display=swap');
+
+
+@font-face {
+  font-family: 'FFGothicTwoTwo';
+  src: url('https://cdn.shopify.com/s/files/1/0665/5849/2822/files/FFGothic_TwoTwo_Regular.otf?v=1774725540') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FFGothicOneTwoCondensed';
+  src: url('https://cdn.shopify.com/s/files/1/0665/5849/2822/files/FFGothic_OneTwoCondensed_Regular.otf?v=1774725540') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Reset and base */
+* {
+box-sizing: border-box;
+scrollbar-width: none;
+-ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+body {
+margin: 0;
+background: #0a0a0a !important;
+color: white;
+font-family: 'MonoLight', sans-serif;
+user-select: none;
+overflow-y: scroll;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+.section-sections--18343536066710__custom_liquid_mdhLUA-padding {
+padding: 0 !important;
+}
+.section-template--18343535575190__custom_liquid_dGk3j3-padding {
+padding: 0;
+}
+a {
+color: #2600e6;
+text-decoration: none;
+}
+a:hover {
+text-decoration: none;
+}
+
+/* Layout */
+.lourd-container {
+max-width: 100%;
+margin: 0 auto;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+background: #0a0a0a;
+}
+@media (min-width: 768px) {
+.lourd-container {
+flex-direction: row;
+}
+marquee {
+position: relative !important;
+bottom: 0 !important;
+}
+}
+marquee {
+background-color: #0a0a0a; /* Green background */
+color: black;
+  font-family: "Doto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+padding: 10px;
+border: 2px solid #333;
+overflow: hidden;
+white-space: nowrap;
+border-radius: 5px;
+max-height: 1.8em;
+min-height: 1.8em;
+}
+/* Sidebar */
+.sidebar {
+width: 100%;
+max-height: 100vh;
+overflow-y: auto;
+background-color: #0a0a0a;
+border-right: 1px solid #222;
+padding: 25px;
+padding-bottom: 0;
+display: none;
+flex-direction: column;
+gap: 10px;
+z-index: 10;
+}
+@media (min-width: 768px) {
+.sidebar {
+width: 280px;
+display: flex;
+}
+}
+
+/* Logo */
+.logo img {
+width: 100%;
+height: auto;
+object-fit: contain;
+display: block;
+}
+
+/* Section container */
+.section {
+background-color: #111;
+border-radius: 4px;
+display: flex;
+flex-direction: column;
+}
+.section-header {
+background-color: #111;
+padding: 6px 8px;
+font-family: "Share Tech Mono", monospace;
+font-size: 10px;
+text-transform: uppercase;
+color: white;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.section-header button {
+background-color: #111;
+border: 1px solid #222;
+color: white;
+font-size: 10px;
+font-weight: 700;
+padding: 2px 6px;
+border-radius: 3px;
+cursor: pointer;
+font-family: "Share Tech Mono", monospace;
+}
+.section-header button:hover {
+background-color: #222;
+}
+.section-content {
+padding: 8px;
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+/* Extreme Peace Pre-Sale image */
+.pre-sale img {
+width: 100%;
+height: auto;
+object-fit: contain;
+display: block;
+}
+
+/* Music */
+.music-title {
+background-color: #0a0a0a;
+border: 1px solid #0f0;
+border-radius: 4px;
+color: #0f0;
+font-family: "Share Tech Mono", monospace;
+font-size: 10px;
+padding: 4px 8px;
+text-align: center;
+user-select: text;
+}
+.music-audio {
+width: 100%;
+}
+
+/* Gadgets */
+.gadgets-button {
+background-color: #111;
+border: 1px solid #0f0;
+color: #0f0;
+font-size: 9px;
+font-weight: 700;
+padding: 2px 6px;
+border-radius: 3px;
+cursor: pointer;
+font-family: "Share Tech Mono", monospace;
+display: flex;
+align-items: center;
+gap: 4px;
+}
+.gadgets-button i {
+font-size: 10px;
+}
+.gadgets-button:hover {
+background-color: #0f0;
+color: #000;
+}
+
+/* Featured Comments */
+.comment-header {
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.comment-avatar {
+width: 24px;
+height: 24px;
+border-radius: 50%;
+object-fit: cover;
+display: block;
+}
+.comment-username {
+font-weight: 700;
+font-size: 12px;
+user-select: text;
+}
+.comment-time {
+font-size: 9px;
+color: #888;
+margin-left: auto;
+user-select: text;
+}
+.comment-text {
+font-size: 12px;
+line-height: 1.2;
+user-select: text;
+}
+.comment-text .blue-text {
+color: #3b82f6;
+}
+.comment-footer {
+color: #ff0;
+font-family: "Share Tech Mono", monospace;
+font-size: 10px;
+display: flex;
+align-items: center;
+gap: 6px;
+user-select: text;
+}
+.comment-footer i {
+font-size: 12px;
+cursor: pointer;
+}
+.section.featured-comments {
+display: none;
+}
+
+/* Footer links */
+.footer-links {
+background-color: #111;
+border: 1px solid #222;
+border-radius: 4px;
+font-family: 'MonoLight',sans-serif;
+font-size: 14px;
+color: #0f0;
+padding: 4px 12px;
+display: flex;
+justify-content: center;
+gap: 24px;
+user-select: text;
+font-weight: 600;
+}
+
+/* Main content */
+.main-content {
+flex: 1;
+padding: 20px;
+padding-top: 0;
+max-height: 100vh;
+overflow-y: auto;
+
+flex-direction: column;
+padding-bottom: 9em;
+}
+.main-content *::-webkit-scrollbar {
+display: none;
+}
+
+
+/* Top navigation */
+.top-nav {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin-bottom: 8px;
+font-family: "Share Tech Mono", monospace;
+font-size: 10px;
+color: #ff0;
+align-items: center;
+position: sticky;
+top: 0;
+z-index: 9;
+background: #0a0a0a;
+padding-top: 12px;
+}
+.top-nav button {
+background-color: #111;
+border: 1px solid #222;
+color: #ff0;
+font-weight: 700;
+border-radius: 4px;
+cursor: pointer;
+letter-spacing: 0.1em;
+transition: background-color 0.2s, color 0.2s;
+font-family: "Share Tech Mono", monospace;
+}
+.top-nav button img {
+width: 8em;
+}
+.top-nav button:hover {
+background-color: #eb36cd;
+color: #000;
+}
+.top-nav .login-button {
+background-color: #222;
+border: 1px solid #444;
+color: white;
+font-family: "Share Tech Mono", monospace;
+font-size: 10px;
+font-weight: 700;
+padding: 4px 16px;
+border-radius: 4px;
+cursor: pointer;
+letter-spacing: 0.1em;
+transition: background-color 0.2s;
+}
+.top-nav .login-button:hover {
+background-color: #444;
+}
+.donate-btn {
+  background:rgb(20, 20, 20);
+ border-radius: 3px;
+}
+.donate-btn img {
+    display: block;
+    width: 9.5em;
+    transition: background-color 0.3s ease;
+    border-radius: 0.5rem; /* optional, matches rounded look */
+    padding-bottom: 3px;
+    padding-right: 0;
+    border-radius: 3px;
+    height: auto;
+}
+.donate-btn:hover {
+    background: #eb36cd;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+/* Labels */
+.label {
+font-family: "Share Tech Mono", monospace;
+font-size: 18px;
+color: #2600e6;
+margin-bottom: 4px;
+user-select: text;
+letter-spacing: 0.1em;
+}
+.label strong {
+font-weight: 700;
+}
+
+/* Label row — space between label and nav */
+.featured-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Slide nav */
+.slide-nav {
+  display: flex;
+  gap: 26px;
+}
+.slide-btn {
+  font-family: inherit; /* inherits from .label / page font */
+  font-size: 18px;
+  color: #2600e6;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.1em;
+  transition: opacity 0.2s ease;
+  user-select: none;
+}
+.slide-btn:hover { opacity: 0.9; }
+.slide-btn.active { opacity: 1; color: #d70abb; }
+
+/* Slides — stack inside existing container */
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  pointer-events: none;
+  will-change: opacity;
+}
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay text (unchanged from your original) */
+.featured-video-text {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  color: white;
+  user-select: text;
+  z-index: 2;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Featured video */
+.featured-video-container {
+position: relative;
+border: 1px solid #222;
+border-radius: 4px;
+overflow: hidden;
+margin-bottom: 16px;
+height: 600px;
+max-height: 70vh;
+}
+.featured-video-container img {
+width: 100%;
+height: 100%;    
+object-fit: cover;
+display: block;
+}
+.featured-video-text {
+position: absolute;
+bottom: 12px;
+left: 12px;
+color: white;
+font-family: "Orbitron", sans-serif;
+user-select: text;
+text-shadow: 2px 2px 0 #000;
+}
+.featured-video-text .title {
+text-transform: uppercase;
+font-size: 48px;
+font-weight: 900;
+color: #fff105;
+line-height: 1;
+margin-bottom: 0;
+letter-spacing: -1px;
+font-family: 'FFGothicOneTwoCondensed', sans-serif;
+text-shadow:
+  -1px -1px 0px #000000,
+  -2px -2px 0px #000000,
+   1px -1px 0px #000000,
+  -2px  2px 0px #000000,
+  -2px -2px 0px #000000,
+  -1px  1px 0px #000000,
+   2px  2px 0px #000000,
+   4px  4px 0px #000000,
+   6px  6px 0px #000000;
+}
+.featured-video-text .subtitle {
+text-transform: uppercase;
+font-family: 'FFGothicTwoTwo', sans-serif;
+font-size: 18px;
+font-weight: 700;
+letter-spacing: -1px;
+margin-top: 0;
+color: #fff;
+text-shadow:
+  -1px -1px 0px #000000,
+  -2px -2px 0px #000000,
+   1px -1px 0px #000000,
+  -2px  2px 0px #000000,
+  -2px -2px 0px #000000,
+  -1px  1px 0px #000000,
+   2px  2px 0px #000000,
+   4px  4px 0px #000000,
+   6px  6px 0px #000000;
+  }
+}
+
+/* Carousel container */
+.carousel {
+display: flex;
+overflow-x: auto;
+gap: 8px;
+padding-bottom: 8px;
+scrollbar-width: none;
+-ms-overflow-style: none;
+}
+
+
+/* Carousel item */
+.carousel-item {
+flex: 0 0 auto;
+width: 90px;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+user-select: text;
+}
+.carousel-item img,
+.carousel-item video {
+width: 90px;
+height: 60px;
+object-fit: cover;
+border-radius: 4px;
+border: 1px solid #0101FE;
+display: block;
+position: relative;
+}
+.carousel-item .title {
+font-family: "Share Tech Mono", monospace;
+font-weight: 700;
+font-size: 9px;
+margin-top: 4px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+color: white;
+}
+.carousel-item .title span {
+font-weight: 400;
+}
+
+/* Video hover container */
+.video-hover-container {
+position: relative;
+width: 90px;
+height: 60px;
+}
+.video-hover-container img,
+.video-hover-container video {
+position: absolute;
+top: 0;
+left: 0;
+width: 90px;
+height: 60px;
+object-fit: cover;
+border-radius: 4px;
+border: 1px solid #222;
+display: block;
+}
+.video-hover-container video {
+display: none;
+}
+.video-hover-container:hover video {
+display: block;
+}
+.video-hover-container:hover img {
+display: none;
+}
+.video-hover-container .title {
+margin-top: 4px;
+font-family: "Share Tech Mono", monospace;
+font-weight: 700;
+font-size: 9px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+color: white;
+user-select: text;
+position: relative;
+top: 6.5em;
+}
+</style>
+
+<!-- custom style -->
+<style>
+* {
+margin: 0;
+padding: 0;
+}
+.bottom-footer {
+display: flex;
+justify-content: space-around;
+background-color: #050206;
+padding: 0 10px;
+position: fixed;
+width: 100%;
+bottom: 0;
+color: #fff;
+height: 4em;
+z-index: 999999;
+}
+
+.nav-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+color: #f0f0f0;
+border: 0.5px solid #444;
+height: 100%;
+width: 100%;
+background: black;
+}
+
+.nav-item i {
+font-size: 20px;
+}
+@media (min-width: 768px) {
+.bottom-footer {
+display: none;
+}
+.d-none {
+display: none !important;
+
+}
+}
+  .mobile-header {
+    display: none
+;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (max-width: 48em) {
+  .featured-video-text .title {
+font-size: 26px;
+}
+.featured-video-text .subtitle {
+font-size: 14px;
+}
+.top-nav {
+display: none;
+}
+.featured-video-text .subtitle {
+  font-size: 1.15rem;
+}
+.m-none {
+display: none !important;
+}
+.featured-video-container img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+.featured-video-container {
+height: 60vh;
+}
+.mobile-header {
+position: sticky;
+top: 0;
+background: #0a0a0a;
+z-index: 1000;
+  display: flex;
+}
+}
+.flex {
+  display: flex;
+  gap: .7em;
+  align-items: center;
+}
+/* Hide by default */
+.mobile-marquee {
+  display: none;
+}
+@media (max-width: 768px) {
+/* Show only on mobile (max-width 768px) */
+.mobile-marquee span.blue { 
+  background: linear-gradient(90deg, #2600e6, rgb(38, 11, 169));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 1px 0px rgba(38, 0, 230, 0.5),
+               0 0 1ex rgb(36, 12, 156),
+               0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+.mobile-marquee span.pink {  
+  background: linear-gradient(90deg, #eb36cd, #a0208f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 1px 0px rgba(235, 54, 205, 0.5),
+               0 0 1ex #a0208f,
+               0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+.mobile-marquee span.yellow {
+  background: linear-gradient(90deg, #fff105, #bba800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 1px 0px rgba(187, 168, 0, 0.5),
+               0 0 1ex #bba800,
+               0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+  .mobile-marquee-wrapper {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    border-radius: .3em;
+    padding: 0 !important;
+    margin-bottom: 2.5px;
+    margin-top: 2.5px;
+    background: #0a0a0a;
+    gap: 0.7em;
+    position: relative;
+    z-index: 1;
+    border: 2px solid #202020;
+  }
+
+  .mobile-marquee {
+    display: flex;
+    flex-shrink: 0;
+    animation: scroll-left 15s linear infinite;
+    height: 1.5em;
+  }
+
+  .mobile-marquee span {
+    margin: 0 2rem;
+   text-transform: uppercase;
+   letter-spacing: 1px; 
+   font-size: 18px ! important; 
+   font-family: "Doto";
+  font-weight: 900;
+  font-style: normal;
+    position: relative;
+  font-weight: 900;
+  margin: 0 50px;
+  top: -3.8px;
+  }
+}
+.pdf-viewer-content {
+  display: none;
+}
+.d-marquee {
+background-color: #0a0a0a;
+color: black;
+  font-family: "Doto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings:
+    "ROND" 0;
+padding: 0 !important;
+border: 1px solid #333;
+overflow: hidden;
+white-space: nowrap;
+position: fixed !important;
+bottom: 0;
+left: 17.5em;
+width: 100%;
+z-index: 1;
+outline: 1.5px solid #333;
+ outline-offset: 3px;
+background-image: repeating-radial-gradient(
+    circle at 0 0,
+    rgba(255,255,255,0.05) 0,
+    rgba(0,0,0,0.05) 2px
+  );
+}
+
+.d-marquee span.blue {
+  background: linear-gradient(90deg, #2600e6, rgb(38, 11, 169));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 1px 0px rgba(38, 0, 230, 0.5),
+               0 0 1ex rgb(36, 12, 156),
+               0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+.d-marquee span.pink {
+  background: linear-gradient(90deg, #eb36cd, #a0208f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 1px 0px rgba(235, 54, 205, 0.5),
+               0 0 1ex #a0208f,
+               0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+.d-marquee span.yellow {
+  background: linear-gradient(90deg, #fff105, #bba800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 1px 0px rgba(187, 168, 0, 0.5),
+               0 0 1ex #bba800,
+               0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+
+marquee span {
+  margin: 0 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 20px;
+  font-family: "Doto";
+    top: -5px;
+    position: relative;
+    font-weight: 900;
+}
+}
+
+
+.about-bar * {
+color: #FB0205;
+}
+.about-bar p {
+color: #C8C8C8 !important;
+}
+.placeholder-img {
+  width: 100%;
+  margin-top: 2px;
+  border-radius: 5px;
+}
+/* Overlay */
+.overlay {
+  position: fixed;  
+  inset: 0;
+  background:rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;	
+  pointer-events: none;		
+  transition: opacity 0.2s ease;	    
+  padding: 16px;
+}
+
+/* Active state */
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all; /* blocks background */
+}
+.bi {
+font-size: 24px;
+}
+</style>
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+/>
+
+<div class="lourd-container">
+<!-- Sidebar -->
+<aside class="sidebar" role="complementary" aria-label="Sidebar navigation">
+<!-- Logo -->
+  <button type="button" data-link="home" style="background:none;border:none;cursor:pointer;">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/logobetter_0573f265-3d01-4aa0-aa01-06238b1934c0.png?v=1775121990"
+      width="280"
+      height="70"
+      loading="lazy"
+      alt="Exodus of Time manga panel - Gero vs Cyclops fight"
+    />
+  </button>
+
+<marquee behavior="scroll" direction="left" scrollamount="5" style="padding: 0;">
+  <span class="red" style="
+    position: relative;
+    top: -8px;
+    background: linear-gradient(90deg, #ff0000, #b30000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 24px;
+    text-shadow: 3px 1px 0px rgba(255, 0, 0, 0.5),
+                 0 0 1ex rgba(255, 50, 50, 0.8),
+                 0 0 2px rgba(255, 255, 255, 0.25);
+">
+††† GET, SET, GOKYO, IMPLODE! Psalm 37:12–15 †††
+</span>
+
+
+
+<span class="pink" style="
+  position: relative;
+  top: -8px;
+  background: linear-gradient(90deg, #eb36cd, #a0208f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+      font-size: 24px;
+  text-shadow: 3px 1px 0px rgba(235, 54, 205, 0.5),
+               0 0 1ex #a0208f,
+               0 0 2px rgba(255, 255, 255, 0.25);
+">🌀 GERO VS CYCLOPS: FIGHT NIGHT</span>
+
+<span class="yellow" style="
+  position: relative;
+  top: -8px;
+  background: linear-gradient(90deg, #fff105, #bba800);
+  -webkit-background-clip: text;
+      font-size: 24px;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 1px 0px rgba(187, 168, 0, 0.5),
+               0 0 1ex #bba800,
+               0 0 2px rgba(255, 255, 255, 0.25);
+">✶ SAHARANROCKIN.COM</span>
+
+</marquee>
+<!-- Extreme Peace Pre-Sale -->
+<section class="section pre-sale" aria-label="Extreme Peace Pre-Sale" style="display: none;">
+<header class="section-header">
+EXTREME PEACE PRE-SALE
+<button aria-label="Toggle Extreme Peace Pre-Sale">
+<i class="fas fa-minus"></i>
+</button>
+</header>
+<div class="section-content">
+<img
+src="https://storage.googleapis.com/a1aa/image/f9470f02-be79-4da0-e9b9-b2bba9407753.jpg"
+alt="Exodus of Time manga panel - Gero vs Cyclops fight"
+width="260"
+height="100"
+loading="lazy"
+/>
+</div>
+</section>
+
+<!-- Music -->
+<iframe 
+  src="https://saharanrockin.pages.dev/" 
+  style="width: 100%; border: none; min-height: 350px" 
+  id="webamp-iframe"
+></iframe>
+
+<footer class="footer-links" role="contentinfo">
+<a href="#" tabindex="0">AUDIO VISUALIZER</a>
+</footer>
+
+  <img 
+    src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/mobilebackround543_a02224ec-5c5a-4e35-b0f0-0bf606064809.jpg?v=1735771731" 
+    class="placeholder-img"
+    alt="Placeholder"
+  >
+
+<div class="socials">
+<a href="https://www.instagram.com/saharanrockin/"><i class="bi bi-instagram"></i></a>
+<a href="https://www.youtube.com/@saharanrockin"><i class="bi bi-youtube"></i></a>
+<a href="https://saharanrockin.newgrounds.com/"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/png-transparent-newground-icon-portal-newgrounds-logo-website-music-tank-ico-angle-monochrome-sports-equipment-removebg-preview.png?v=1752170018" style="width: 30px"></a>
+<a href="https://x.com/saharanrockin"><i class="bi bi-twitter"></i></a>
+<a href="https://www.tiktok.com/@saharanrockin"><i class="bi bi-tiktok"></i></a>
+</div>
+
+
+<!-- Featured Comments -->
+<section class="section featured-comments" aria-label="Featured Comments">
+<header class="section-header">
+FEATURED COMMENTS
+<button aria-label="Toggle Featured Comments">
+<i class="fas fa-minus"></i>
+</button>
+</header>
+<div class="section-content">
+<div class="comment-header">
+<img
+src="https://storage.googleapis.com/a1aa/image/fb13b58a-7c9d-4522-b8e3-2b3fa55b7010.jpg"
+alt="Exodus of Time manga panel - Gero vs Cyclops fight"
+class="comment-avatar"
+width="24"
+height="24"
+loading="lazy"
+/>
+<span class="comment-username" tabindex="0">EpexICXC</span>
+<span class="comment-time" tabindex="0">5 DAYS AGO</span>
+</div>
+<p class="comment-text" tabindex="0">
+I like the <span class="blue-text">blue card</span> Jokes segment.
+Rest In Peace Norm Macdonald
+</p>
+<div class="comment-footer" tabindex="0">
+EP05 - Black Conspiracies
+<i class="fas fa-thumbs-up" aria-label="Thumbs up"></i>18
+<i class="fas fa-thumbs-down" aria-label="Thumbs down"></i>0
+</div>
+</div>
+</section>
+
+
+<!-- Footer links -->
+
+<div class="sub-footer">
+
+<div class="flex">
+<a href="/">Privacy</a>
+<a href="/">TOS</a>
+<a href="/">Help</a>
+</div>
+<p style="color: #fff; text-align: center; width: 75%; line-height: 1.3; font-size: .8em">
+  &copy; <span id="currentYear"></span> Saharan Rockin LLC, All rights reserved
+</p>
+
+<script>
+  const year = new Date().getFullYear();
+  document.getElementById('currentYear').textContent = year;
+  console.log("Current year:", year);
+</script>
+</div>
+</aside>
+
+<!-- Main content -->
+<main class="main-content" role="main">
+  <div class="mobile-header">
+    <button type="button" data-link="home" style="background:none;border:none;cursor:pointer;">
+      <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/logobetter.png?v=1750533600" alt="Exodus of Time manga panel - Gero vs Cyclops fight" />
+    </button>
+    <button data-id="aboutPopup" class="popup-trigger">About</button>
+  </div>
+
+  <!-- Mobile Marquee -->
+ <div class="mobile-marquee-wrapper">
+    <div class="mobile-marquee">
+      <span class="red" style="
+    position: relative;
+    background: linear-gradient(90deg, #ff0000, #b30000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 3px 1px 0px rgba(255, 0, 0, 0.5),
+                 0 0 1ex rgba(255, 50, 50, 0.8),
+                 0 0 2px rgba(255, 255, 255, 0.25);
+">
+††† GET, SET, GOKYO, IMPLODE! Psalm 37:12–15 †††
+</span>
+      <span class="pink">🌀 GERO VS CYCLOPS: FIGHT NIGHT</span>
+      <span class="yellow">✶ SAHARANROCKIN.COM</span>
+    </div>
+  </div>
+
+
+<!-- Top navigation -->
+<nav class="top-nav" aria-label="Primary navigation">
+<button type="button" data-link="home"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed.png?v=1750614062"></button>
+<button type="button" data-link="/read"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/readbutton.png?v=1750614217"></button>
+<button type="button" data-link="/hotline"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/watch_button.png?v=1765216670"></button>
+<button type="button" data-link="/merch"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/shopbutton.png?v=1750632068"></button>
+<a href="https://ko-fi.com/saharanrockin" target="_blank" class="donate-btn">
+  <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/donatebutton.png?v=1750632074" alt="Exodus of Time manga panel - Gero vs Cyclops fight">
+</a>
+<button data-id="aboutPopup" class="popup-trigger"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_2.png?v=1750614089"></button>
+
+<div class="socials">
+<a href="https://www.instagram.com/saharanrockin/"><i class="bi bi-instagram"></i></a>
+<a href="https://www.youtube.com/@saharanrockin"><i class="bi bi-youtube"></i></a>
+<a href="https://saharanrockin.newgrounds.com/"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/png-transparent-newground-icon-portal-newgrounds-logo-website-music-tank-ico-angle-monochrome-sports-equipment-removebg-preview.png?v=1752170018" style="width: 2em"></a>
+<a href="https://x.com/saharanrockin"><i class="bi bi-twitter"></i></a>
+<a href="https://www.tiktok.com/@saharanrockin"><i class="bi bi-tiktok"></i></a>
+</div>
+</nav>
+<!-- Responsive Windows 95 Popup -->
+<div class="overlay" id="overlay">
+<div class="popup" id="aboutPopup">
+<div class="popup-header">
+About Us
+<div class="close-btn" data-id="aboutPopup">X</div>
+</div>
+<div class="popup-body">
+<h3><b>Exodus of Time</b></h3><br>
+
+<p>
+Exodus of Time is a sci-fi
+manga series created by
+Drake - aka Cactus Guts.
+Set on the desert planet E-
+77, it follows Gero and Rae
+as they uncover psychic
+conspiracies, ancient
+prophecies, and the legend
+of the Eyes - a force said
+to manipulate time itself.
+Fueled by chaos, survival,
+and warped timelines, each
+chapter dives deeper into
+the cosmic unknown.
+</p>
+<br>
+<h3><b>Saharan Rockin</b></h3><br>
+<p>
+Saharan Rockin is the
+independent studio and
+creative label behind
+Exodus of Time. Founded by
+Drake, it's a storytelling
+platform that fuses manga,
+glitchcore aesthetics,
+satire, and immersive
+workdbuilding. From
+experimental comics to
+Rae's Hotline broadcasts
+and beyond, Saharan
+Rockin
+exists to push the
+boundaries of indie manga
+and animation - and invite
+fans into the madness.
+</p>
+</div>
+</div>
+</div>
+
+<div class="page" id="page">
+<!-- Featured label row -->
+<div class="label featured-label-row" aria-label="Featured label">
+  <span>[ <strong>FEATURED</strong> ]</span>
+  <nav class="slide-nav" aria-label="Slideshow navigation">
+    <button class="slide-btn active" data-slide="0">[1]</button>
+    <button class="slide-btn" data-slide="1">2</button>
+    <button class="slide-btn" data-slide="2">3</button>
+    <button class="slide-btn" data-slide="3">4</button>
+  </nav>
+</div>
+
+<!-- Featured slideshow -->
+<div class="featured-video-container" id="featuredSlideshow">
+
+  <div class="slide active" data-index="0">
+    <img src="https://res.cloudinary.com/dyu69zz6k/image/upload/v1775691243/Eotchatper1poaster-F7x2cmjs_4_nvkok4.png" alt="Exodus of Time — Official Trailer" width="960" height="360" />
+    <div class="featured-video-text">
+      <h1 class="title">Exodus of Time — Dreaming & Scheming</h1>
+      <h2 class="subtitle"></h2>
+    </div>
+  </div>
+
+  <div class="slide" data-index="1">
+    <img src="https://res.cloudinary.com/dyu69zz6k/image/upload/v1775691243/Eotchatper1poaster-F7x2cmjs_4_nvkok4.png" alt="Slide 2" width="960" height="360" />
+    <div class="featured-video-text">
+      <h1 class="title">Exodus of Time — Dreaming & Scheming</h1>
+      <h2 class="subtitle"></h2>
+    </div>
+  </div>
+
+  <div class="slide" data-index="2">
+    <img src="https://res.cloudinary.com/dyu69zz6k/image/upload/v1775691243/Eotchatper1poaster-F7x2cmjs_4_nvkok4.png" alt="Slide 3" width="960" height="360" />
+    <div class="featured-video-text">
+      <h1 class="title">Exodus of Time — Dreaming & Scheming</h1>
+      <h2 class="subtitle"></h2>
+    </div>
+  </div>
+
+  <div class="slide" data-index="3">
+    <img src="https://res.cloudinary.com/dyu69zz6k/image/upload/v1775691243/Eotchatper1poaster-F7x2cmjs_4_nvkok4.png" alt="Slide 4" width="960" height="360" />
+    <div class="featured-video-text">
+      <h1 class="title">Exodus of Time — Dreaming & Scheming</h1>
+      <h2 class="subtitle"></h2>
+    </div>
+  </div>
+
+  <div class="slide" data-index="4">
+    <img src="https://res.cloudinary.com/dyu69zz6k/image/upload/v1775691243/Eotchatper1poaster-F7x2cmjs_4_nvkok4.png" alt="Slide 5" width="960" height="360" />
+    <div class="featured-video-text">
+      <h1 class="title">Exodus of Time — Dreaming & Scheming</h1>
+      <h2 class="subtitle"></h2>
+    </div>
+  </div>
+
+</div>
+
+<!-- New videos carousel -->
+<div class="carousel" aria-label="New videos carousel" style="display: none">
+<div class="carousel-item" tabindex="0" data-link="https://www.youtube.com/watch?v=jEZ0McBDfq4" target="_blank">
+<img
+src="https://storage.googleapis.com/a1aa/image/d85d6ae9-b200-4ad2-2d65-c133e12f70bf.jpg"
+alt="Exodus of Time manga panel - Gero vs Cyclops fight"
+width="90"
+height="60"
+loading="lazy"
+/>
+<div class="title">
+#113 <span>Chark</span>
+</div>
+</div>
+
+<div class="carousel-item video-hover-container" tabindex="0" title="Extreme Peace demo video">
+<img
+src="https://storage.googleapis.com/a1aa/image/b18afb62-3805-48e6-3abb-1b3344b092bc.jpg"
+alt="Exodus of Time manga panel - Gero vs Cyclops fight"
+width="90"
+height="60"
+loading="lazy"
+/>
+<video
+src="https://www.w3schools.com/tags/mov_bbb.mp4"
+autoplay
+muted
+loop
+playsinline
+preload="metadata"
+width="90"
+height="60"
+aria-hidden="true"
+></video>
+<div class="title">Million Dollar Extre...</div>
+</div>
+
+<div class="carousel-item" tabindex="0">
+<img
+src="https://storage.googleapis.com/a1aa/image/666ae047-02ef-45f1-524b-aa0d89b7a022.jpg"
+alt="Video thumbnail #112 Based Roman showing two men with glasses and a woman"
+width="90"
+height="60"
+loading="lazy"
+/>
+<div class="title">#112 Based Roman Sc...</div>
+</div>
+
+<div class="carousel-item" tabindex="0">
+<img
+src="https://storage.googleapis.com/a1aa/image/44bc8bcd-d977-4442-79bc-d067d78b1dab.jpg"
+alt="Williamsburg Street video thumbnail with two women and a boy"
+width="90"
+height="60"
+loading="lazy"
+/>
+<div class="title">Williamsburg Street...</div>
+</div>
+
+<div class="carousel-item" tabindex="0">
+<img
+src="https://storage.googleapis.com/a1aa/image/6d776f9f-bc55-4dcd-ed93-e57f6b0ebbee.jpg"
+alt="Video thumbnail with text 'Vampires' and a man smiling"
+width="90"
+height="60"
+loading="lazy"
+/>
+<div class="title">♀ DJ Kaos Movie Rev...</div>
+</div>
+
+<div class="carousel-item" tabindex="0">
+<img
+src="https://storage.googleapis.com/a1aa/image/db8f4345-5368-4a79-0eec-cf0a73e9b845.jpg"
+alt="COX MEDIA video thumbnail with a man wearing glasses"
+width="90"
+height="60"
+loading="lazy"
+/>
+<div class="title">COX MEDIA</div>
+</div>
+</div>
+<div class="subscription-form-wrapper" style="background:#0a0a0a; padding:2.5rem; text-align:left; width:102%; margin:0 auto; box-sizing:border-box;">
+  {% form 'customer', class: 'subscription-form' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+
+  <h1>Join The E-77 Network</h1>
+    <p style="color:#fff; margin-bottom:1.5rem; font-size:1.5rem;">
+    Get alerts for new chapters, exclusive merch drops and major E-77 transmissions.
+  </p>
+
+    <input
+      type="text"
+      name="contact[first_name]"
+      placeholder="Your Name"
+      required
+    >
+
+    <input
+      type="email"
+      name="contact[email]"
+      placeholder="rae@e77.network"
+      required
+    >
+
+    <button type="submit">Subscribe</button>
+
+    {% if form.posted_successfully? %}
+      <p style="color:#0f0; margin-top:1rem;">Subscription successful! Welcome to the E-77 Network!</p>
+    {% endif %}
+
+    {% if form.errors %}
+      <p style="color:#f00; margin-top:1rem;">
+        {{ form.errors | default_errors }}
+    </p>
+    {% endif %}
+  {% endform %}
+</div>
+
+<!-- Script to clean Shopify form query parameters after submission -->
+<script>
+  if (window.history.replaceState) {
+    const url = window.location.href.split('?')[0].split('#')[0];
+    window.history.replaceState({}, document.title, url);
+  }
+</script>
+
+
+
+<div class="mobile-footer">
+
+<div class="flex">
+<a href="/">Privacy</a>
+<a href="/">TOS</a>
+<a href="/">Help</a>
+</div>
+<p style="color: #fff; text-align: center; margin-top: 4px; font-size: .8em">
+  &copy; <span id="currentYear"></span> Saharan Rockin LLC, All rights reserved
+</p>
+
+<script>
+  const year = new Date().getFullYear();
+  document.getElementById('currentYear').textContent = year;
+  console.log("Current year:", year);
+</script>
+
+<div class="socials">
+<a href="https://www.instagram.com/saharanrockin/"><i class="bi bi-instagram"></i></a>
+<a href="https://www.youtube.com/@saharanrockin"><i class="bi bi-youtube"></i></a>
+<a href="https://saharanrockin.newgrounds.com/"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/png-transparent-newground-icon-portal-newgrounds-logo-website-music-tank-ico-angle-monochrome-sports-equipment-removebg-preview.png?v=1752170018" style="width: 2em"></a>
+<a href="https://x.com/saharanrockin"><i class="bi bi-twitter"></i></a>
+<a href="https://www.tiktok.com/@saharanrockin"><i class="bi bi-tiktok"></i></a>
+</div>
+</div>
+
+</div>
+<div id="iframe-container" style="display:none;"></div>
+  <style>
+.mobile-footer {
+background: #0a0a0a;
+color: #c8c8c8;
+text-align: center;
+padding: 2em 0;
+display: none;
+}
+.mobile-footer h2 {
+color: #fff;
+}
+@media(max-width: 40em) {
+  .label {
+  font-size: 16px;
+}
+.slide-btn {
+  font-size: 16px;
+ }
+.main-content {
+  padding: 10px;
+}
+  .slide-nav { 
+  gap: 8px !important;
+}
+.mobile-footer {
+display: block !important;
+}
+}
+h1 {
+font-weight: bold !important;
+}
+button {
+font-size: 12px;
+font-weight: bold;
+}
+</style>
+
+<marquee behavior="scroll" direction="left" scrollamount="5" class="m-none d-marquee">
+      <span class="red" style="
+    position: relative;
+    background: linear-gradient(90deg, #ff0000, #b30000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 3px 1px 0px rgba(255, 0, 0, 0.5),
+                 0 0 1ex rgba(255, 50, 50, 0.8),
+                 0 0 2px rgba(255, 255, 255, 0.25);
+">
+††† GET, SET, GOKYO, IMPLODE! Psalm 37:12–15 †††
+</span>
+      <span class="pink">🌀 GERO VS CYCLOPS: FIGHT NIGHT</span>
+      <span class="yellow">✶ SAHARANROCKIN.COM</span>
+</marquee>
+
+</main>
+
+
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<!-- Sticky Audio Footer -->
+
+
+<div class="bottom-footer">
+  <button type="button" data-link="/pages/read" class="nav-item">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7621.png?v=1750727448" alt="Exodus of Time manga panel - Gero vs Cyclops fight">
+    <p style="
+      font-size: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-family: 'MonoLight', sans-serif;
+    ">READ</p>
+  </button>
+  <button type="button" data-link="/pages/hotline" class="nav-item">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7620.png?v=1750727413" alt="Exodus of Time manga panel - Gero vs Cyclops fight">
+    <p style="
+      font-size: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-family: 'MonoLight', sans-serif;
+    ">WATCH</p>
+  </button>
+
+  <button type="button" data-link="/pages/merches" class="nav-item">
+    <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7622.png?v=1750727477" alt="Exodus of Time manga panel - Gero vs Cyclops fight">
+    <p style="
+      font-size: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-family: 'MonoLight', sans-serif;
+    ">SHOP</p>
+  </button>
+
+<a href="https://ko-fi.com/saharanrockin" target="_blank" class="nav-item">
+  <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7619.png?v=1750727387" alt="Exodus of Time manga panel - Gero vs Cyclops fight">
+  <p style="
+    padding-top: 1px;
+    font-weight: 600;
+    text-decoration: none !important;
+    ">DONATE</p>
+</a>
+</div>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<!-- Sticky Audio Footer -->
+<div class="sticky-footer-audio">
+    <div class="sticky-footer-audio-main">
+        <div id="sticky-footer-audio-title-area" class="sticky-footer-audio-title-area">
+            Now Playing: Example Audio Title
+        </div>
+        <button id="sticky-footer-audio-play-button" class="sticky-footer-audio-play-button">
+            <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7940.png?v=1752071019" alt="Play" class="icon-img">
+        </button>
+        <button id="sticky-footer-audio-pause-button" class="sticky-footer-audio-play-button hidden">
+            <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7941.png?v=1752071020" alt="Pause" class="icon-img">
+        </button>
+    </div>
+    <div id="sticky-footer-audio-controls" class="sticky-footer-audio-controls">
+        <div class="sticky-footer-audio-progress-container">
+            <input type="range" id="sticky-footer-audio-progress-bar" class="sticky-footer-audio-progress-bar" min="0" max="100" value="0" step="0.1">
+            <span id="sticky-footer-audio-time" class="sticky-footer-audio-time">00:00 / 00:00</span>
+        </div>
+        <div class="sticky-footer-audio-playback-controls">
+            <button id="sticky-footer-audio-loop-icon" class="control-button loop-icon">
+                <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7942.png?v=1752071020" alt="Loop" class="icon-img">
+            </button>
+            <button id="sticky-footer-audio-prev" class="control-button">
+                <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7939.png?v=1752071020" alt="Previous" class="icon-img">
+            </button>
+            <button id="sticky-footer-audio-play" class="control-button">
+                <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7940.png?v=1752071019" alt="Play" class="icon-img">
+            </button>
+            <button id="sticky-footer-audio-pause" class="control-button hidden">
+                <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7941.png?v=1752071020" alt="Pause" class="icon-img">
+            </button>
+            <button id="sticky-footer-audio-next" class="control-button">
+                <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_7938.png?v=1752071019" alt="Next" class="icon-img">
+            </button>
+            <input type="range" id="sticky-footer-audio-volume-slider" class="sticky-footer-audio-volume-slider" min="0" max="1" step="0.01" value="1">
+        </div>
+    </div>
+</div>
+
+<style>
+.icon-img {
+    pointer-events: none;
+}
+.hidden {
+    display: none;
+}
+</style>
+
+<script>
+    // Mobile Audio Player Elements
+    const mobileAudio = new Audio();
+
+    const stickyFooterAudioTitleArea = document.getElementById('sticky-footer-audio-title-area');
+    const stickyFooterAudioPlayButton = document.getElementById('sticky-footer-audio-play-button');
+    const stickyFooterAudioPauseButton = document.getElementById('sticky-footer-audio-pause-button');
+
+    const stickyFooterAudioControls = document.getElementById('sticky-footer-audio-controls');
+    const stickyFooterAudioLoopIcon = document.getElementById('sticky-footer-audio-loop-icon');
+    const stickyFooterAudioPrevButton = document.getElementById('sticky-footer-audio-prev');
+    const stickyFooterAudioPlayBtn = document.getElementById('sticky-footer-audio-play');
+    const stickyFooterAudioPauseBtn = document.getElementById('sticky-footer-audio-pause');
+    const stickyFooterAudioNextButton = document.getElementById('sticky-footer-audio-next');
+    const stickyFooterAudioTime = document.getElementById('sticky-footer-audio-time');
+    const stickyFooterAudioVolumeSlider = document.getElementById('sticky-footer-audio-volume-slider');
+    const stickyFooterAudioProgressBar = document.getElementById('sticky-footer-audio-progress-bar');
+
+    //Track Playlist
+    const mobileTracks = [
+        { title: "KANYE WEST - STRONGER", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Stronger.mp3?v=1762758444" },
+        { title: "KAYTRANADA - GOT IT GOOD", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/KAYTRANADA_-_GOT_IT_GOOD.mp3?v=1750887785" },
+        { title: "SZA - BLIND FARLEON REMIX - FARLEON", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/SZA_-_Blind_Farleon_Remix_-_Farleon.mp3?v=1763634619" },
+
+        { title: "DJ ANEMIA - ARCHANGEL", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/archangel_-_DJ_Anemia.mp3?v=1763634624" },
+
+        { title: "MAREUX - KILLER", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Killer_-_Mareux.mp3?v=1763634626" },
+
+        { title: "CAMOUFLY - NOTHING LEFT 2 SAY", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/nothing_left_2_say_-_camoufly.mp3?v=1763634628" }, 
+
+        { title: "MILCO - DARLING DON'T BE SO SHY", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/darling_don_t_be_so_shy_-_Milco.mp3?v=1763634628" },
+
+        { title: "AFTER WES - I FEEL ALONE AND IT'S COLD OUTSIDE", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/i_feel_alone__and_its_cold_outside_-_After_Wes.mp3?v=1763634630" },
+
+        { title: "OPEN TILL L8 - BYE BYE BYE", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Bye_Bye_Bye_-_Open_Till_L8.mp3?v=1763634630" },
+
+        { title: "OLIVER HELDENS - KOALA CALU REMIX", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Oliver_Heldens_-_Koala_Calu_Remix.mp3?v=1763634631" },
+
+        { title: "DOUVELLE19 - GREEN LIGHT", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Green_Light_-_Douvelle19.mp3?v=1763634634" },
+
+        { title: "BREAD BEATZ - SAXOBEAT", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Saxobeat_-_Bread_Beatz.mp3?v=1763634635" },
+
+        { title: "Usurper - NXCRE", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Usurper_-_NXCRE.mp3?v=1750887843" },
+        { title: "Over Over - j tropic", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Over_Over_-_j_tropic.mp3?v=1750888138" },
+        { title: "Bad - DELACOUR", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Bad_-_DELACOUR.mp3?v=1750888328" },
+        { title: "Dice Game - Kouek", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Dice_Game_-_Kouek.mp3?v=1750888300" },
+        { title: "Don't Start Now (Kaytranada Remix) - Dua Lipa", src: "https://cdn.shopify.com/s/files/1/0665/5849/2822/files/Don_t_Start_Now_Kaytranada_Remix_-_Dua_Lipa.mp3?v=1750888295" },
+        { title: "awfuless- Redemption", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/awfuless_-_Redemption.mp3?v=1756958733" },
+        { title: "Been A Minute - Snakehips", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Been_A_Minute..._-_Snakehips.mp3?v=1756958735" },
+        { title: "Days Go On - glue70", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Days_Go_On_-_glue70.mp3?v=1756958761" },
+        { title: "Don't Say Ur Sorry - ellis", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Don_t_Say_Ur_Sorry_-_ellis.mp3?v=1756958765" },
+        { title: "glue70 - Majer", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/glue70_-_Majer.mp3?v=1756958793" },
+        { title: "hand crushed by a mallet - 100 gecs", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/hand_crushed_by_a_mallet_-_100_gecs.mp3?v=1756958803" },
+        { title: "Egypt - 1992", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Egypt_-_1992.mp3?v=1756958807" },
+        { title: "Solero w Harry - Griffiths", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Solero_w__Harry_Griffiths.mp3?v=1756958881" },
+        { title: "Strike - Little Monarch", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Strike_-_Little_Monarch.mp3?v=1756958887" },
+        { title: "The Future - Yuni Wa", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/The_Future_-_Yuni_Wa.mp3?v=1756958888" },
+        { title: "Realize - agrume", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Realize_-_agrume.mp3?v=1756958970" },
+        { title: "Smino - Wild Irish Roses", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Smino_-_Wild_Irish_Roses.mp3?v=1756958970" },
+        { title: "Love & War - Yellow Claw G Funk Remix - Yellow_Claw", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Love_War_-_Yellow_Claw_G-Funk_Remix_-_Yellow_Claw.mp3?v=1756959010" },
+        { title: "Mad Bitches - Mikhala Jene", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Mad_Bitches_-_Mikhala_Jene.mp3?v=1757017532" },
+        { title: "The Way That You Move - Kwaku Asante", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/The_Way_That_You_Move_-_Kwaku_Asante.mp3?v=1757017574" },
+        { title: "HurricaneJ.I.M.-Duckwrth", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Hurricane_J.I.M._-_Duckwrth.mp3?v=1757019382" },
+        { title: "Kick Push - Lupe Fiasco", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Kick_Push_-_Lupe_Fiasco.mp3?v=1757019386" },
+        { title: "NOTFAIR - Hatena", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/NOTFAIR_-_Hatena.mp3?v=1757019395" },
+        { title: "Been A Minute... - Snakehips", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Been_A_Minute..._-_Snakehips_d10a3760-59ee-4596-8597-26ed72f95856.mp3?v=1757019493" },
+        { title: "Delta Heavy - Ghost Infuze Remix", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Delta_Heavy_-_Ghost_Infuze_Remix_db60f780-e5b6-4039-a85c-7d4267cf8713.mp3?v=1757019496" },
+        { title: "Fake It - Tauren Wells", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Fake_It_-_Tauren_Wells.mp3?v=1757019599" },
+        { title: "what we did in the desert - eightiesheadachetape", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/what_we_did_in_the_desert_-_eightiesheadachetape.mp3?v=1757019672" },
+        { title: "YOU'RE THE ONE - KAYTRANADA", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/YOU_RE_THE_ONE_-_KAYTRANADA.mp3?v=1757019672" },
+        { title: "Lazy - Forever", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Lazy_Forever.mp3?v=1757019717" },
+        { title: "Lil Love Song - Tash", src: "https://cdn.shopify.com/s/files/1/0945/2411/3199/files/Lil_Love_Song_-_Tash.mp3?v=1757019724" },
+    ];
+
+    // State
+    let mobileIsPlaying = false;
+    let mobileIsExpanded = false;
+    let mobileIsLooping = false;
+    let mobileCurrentTrackIndex = 0;
+
+    function shuffleTracks() {
+    for (let i = mobileTracks.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [mobileTracks[i], mobileTracks[j]] = [mobileTracks[j], mobileTracks[i]];
+    }
+}
+ 
+    function mobileLoadTrack(play = false) {
+        const track = mobileTracks[mobileCurrentTrackIndex];
+        mobileAudio.src = track.src;
+        stickyFooterAudioTitleArea.textContent = `Now Playing: ${track.title}`;
+        if (play) {
+            mobilePlay();
+        }
+    }
+
+    function mobilePlay() {
+        mobileAudio.play();
+        mobileIsPlaying = true;
+        stickyFooterAudioPlayButton.classList.add('hidden');
+        stickyFooterAudioPauseButton.classList.remove('hidden');
+        stickyFooterAudioPlayBtn.classList.add('hidden');
+        stickyFooterAudioPauseBtn.classList.remove('hidden');
+    }
+
+    function mobilePause() {
+        mobileAudio.pause();
+        mobileIsPlaying = false;
+        stickyFooterAudioPauseButton.classList.add('hidden');
+        stickyFooterAudioPlayButton.classList.remove('hidden');
+        stickyFooterAudioPauseBtn.classList.add('hidden');
+        stickyFooterAudioPlayBtn.classList.remove('hidden');
+    }
+
+    function mobileToggleControls() {
+        mobileIsExpanded = !mobileIsExpanded;
+        stickyFooterAudioControls.classList.toggle('expanded', mobileIsExpanded);
+    }
+
+    function updateMobileTimeDisplay() {
+        const format = (s) => {
+            const m = Math.floor(s / 60);
+            const sec = Math.floor(s % 60);
+            return `${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        };
+        const current = format(mobileAudio.currentTime);
+        const total = isNaN(mobileAudio.duration) ? '00:00' : format(mobileAudio.duration);
+        stickyFooterAudioTime.textContent = `${current} / ${total}`;
+        stickyFooterAudioProgressBar.value = !isNaN(mobileAudio.duration)
+            ? (mobileAudio.currentTime / mobileAudio.duration) * 100
+            : 0;
+    }
+
+    // Event Listeners
+    stickyFooterAudioPlayButton.addEventListener('click', e => { e.stopPropagation(); mobilePlay(); });
+    stickyFooterAudioPauseButton.addEventListener('click', e => { e.stopPropagation(); mobilePause(); });
+
+    stickyFooterAudioTitleArea.addEventListener('click', mobileToggleControls);
+    stickyFooterAudioPlayBtn.addEventListener('click', mobilePlay);
+    stickyFooterAudioPauseBtn.addEventListener('click', mobilePause);
+
+    stickyFooterAudioLoopIcon.addEventListener('click', () => {
+        mobileIsLooping = !mobileIsLooping;
+        mobileAudio.loop = mobileIsLooping;
+        stickyFooterAudioLoopIcon.classList.toggle('active', mobileIsLooping);
+    });
+
+    stickyFooterAudioPrevButton.addEventListener('click', () => {
+        mobileCurrentTrackIndex = (mobileCurrentTrackIndex - 1 + mobileTracks.length) % mobileTracks.length;
+        mobileLoadTrack(true);
+    });
+
+    stickyFooterAudioNextButton.addEventListener('click', () => {
+        mobileCurrentTrackIndex = (mobileCurrentTrackIndex + 1) % mobileTracks.length;
+        mobileLoadTrack(true);
+    });
+
+    stickyFooterAudioVolumeSlider.addEventListener('input', (e) => {
+        mobileAudio.volume = e.target.value;
+    });
+
+    stickyFooterAudioProgressBar.addEventListener('input', (e) => {
+        const seekTime = (e.target.value / 100) * mobileAudio.duration;
+        if (!isNaN(seekTime)) {
+            mobileAudio.currentTime = seekTime;
+        }
+    });
+
+    mobileAudio.addEventListener('timeupdate', updateMobileTimeDisplay);
+    mobileAudio.addEventListener('loadedmetadata', updateMobileTimeDisplay);
+
+    mobileAudio.addEventListener('ended', () => {
+        mobilePause();
+        if (!mobileAudio.loop) {
+            mobileCurrentTrackIndex = (mobileCurrentTrackIndex + 1) % mobileTracks.length;
+            mobileLoadTrack(true);
+        }
+    });
+
+window.onload = function () {
+    stickyFooterAudioVolumeSlider.value = mobileAudio.volume;
+
+    shuffleTracks(); // randomize order each visit
+    mobileCurrentTrackIndex = Math.floor(Math.random() * mobileTracks.length); // random start song
+
+    updateMobileTimeDisplay();
+    mobileLoadTrack(); // Load shuffled + random start
+};
+</script>
+     
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+
+      const headerOffset = document.querySelector('.site-header')?.offsetHeight || 0;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Optional: Prevent scroll jank on wheel events
+  let isScrolling;
+  window.addEventListener('wheel', function(e) {
+    window.clearTimeout(isScrolling);
+    isScrolling = setTimeout(() => {}, 66);
+  }, false);
+});
+</script>
+
+<script>
+const page = document.querySelector('.page');
+const iframeContainer = document.getElementById('iframe-container');
+
+async function loadPageContent(url) {
+  try {
+    const res = await fetch(url, {
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    });
+    if (!res.ok) throw new Error('Network error');
+
+    const html = await res.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    // ✅ Only grab the snippet area, not full layout
+    const snippetContent = doc.querySelector('.snippet-wrapper')?.innerHTML || html;
+
+iframeContainer.innerHTML = snippetContent;
+
+// Re-execute scripts that were injected via innerHTML
+iframeContainer.querySelectorAll('script').forEach(oldScript => {
+  const newScript = document.createElement('script');
+  [...oldScript.attributes].forEach(attr => newScript.setAttribute(attr.name, attr.value));
+  newScript.textContent = oldScript.textContent;
+  oldScript.parentNode.replaceChild(newScript, oldScript);
+});
+    iframeContainer.style.display = 'block';
+    page.style.display = 'none';
+  } catch (e) {
+    console.error('Failed to load snippet:', e);
+    iframeContainer.innerHTML = '<p>Failed to load content.</p>';
+    iframeContainer.style.display = 'block';
+    page.style.display = 'none';
+  }
+}
+
+// ✅ Intercept buttons with data-link
+document.querySelectorAll('button[data-link]').forEach(button => {
+  button.addEventListener('click', e => {
+    e.preventDefault();
+    const link = button.getAttribute('data-link');
+    if (!link) return;
+
+    if (link === 'home' || link === '/' || link === '/pages/home') {
+      page.style.display = 'block';
+      iframeContainer.style.display = 'none';
+      iframeContainer.innerHTML = '';
+    } else {
+      loadPageContent(link);
+    }
+  });
+});
+
+// ✅ Intercept nav links + product grid links
+document.addEventListener('click', e => {
+  const linkEl = e.target.closest('a');
+  if (!linkEl) return;
+
+  const link = linkEl.getAttribute('href');
+  if (!link) return;
+
+  // Skip external links
+  if (link.startsWith('http') || link.startsWith('//')) return;
+
+  e.preventDefault();
+
+  if (link === '/' || link === '/pages/home') {
+    page.style.display = 'block';
+    iframeContainer.style.display = 'none';
+    iframeContainer.innerHTML = '';
+  } else {
+    loadPageContent(link);
+  }
+});
+</script>
+
+
+<script>
+const overlay = document.getElementById("overlay");
+
+// OPEN popup
+document.querySelectorAll('.popup-trigger').forEach(button => {
+  button.addEventListener('click', () => {
+    overlay.classList.add('active');
+  });
+});
+
+// CLOSE with X
+document.querySelectorAll('.close-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    overlay.classList.remove('active');
+  });
+});
+
+// CLOSE when clicking overlay (outside popup)
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) {
+    overlay.classList.remove('active');
+  }
+});
+
+
+document.querySelectorAll('.popup-trigger').forEach(button => {
+  button.addEventListener('click', () => {
+    const id = button.getAttribute('data-id');
+    const popup = document.getElementById(id);
+    if (popup) popup.style.display = 'flex';
+  });
+});
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Prefer Shopify's scroll container if it exists
+  const scrollContainer = document.querySelector('.main-content') || window;
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+
+      const target = document.querySelector(targetId);
+      if (!target) return;
+
+      e.preventDefault();
+
+      const headerOffset = document.querySelector('.site-header')?.offsetHeight || 0;
+      const elementPosition = target.getBoundingClientRect().top + (scrollContainer === window ? window.scrollY : scrollContainer.scrollTop);
+      const offsetPosition = elementPosition - headerOffset;
+
+      if (scrollContainer === window) {
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      } else {
+        scrollContainer.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Smooth scroll for "back to top" buttons
+  document.querySelectorAll('.back-to-top').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (scrollContainer === window) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+});
+</script>
+<script>
+  const mobileLogo = document.getElementById('mobileLogo');
+  const mainContent = document.querySelector('main.main-content'); // existing main content
+
+  mobileLogo.addEventListener('click', async (e) => {
+    e.preventDefault(); // prevent any default navigation
+
+    try {
+      // Fetch the homepage snippet rendered via a Shopify view
+      const response = await fetch('/?view=index'); 
+      if (!response.ok) throw new Error('Failed to load homepage snippet');
+
+      const html = await response.text();
+
+      // Replace current main content with the snippet
+      mainContent.innerHTML = html;
+
+      // Optional: scroll to top
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.error('Error loading homepage snippet:', error);
+    }
+  });
+</script>
+<script>
+let scrollPosition = 0;
+
+function startMarquee() {
+  const marquee = document.querySelector('.mobile-marquee');
+  if (!marquee) return;
+  
+  // Clone and append the content to create seamless loop
+  const content = marquee.innerHTML;
+  marquee.innerHTML = content + content;
+  
+  // Start from the right edge (screen width)
+  scrollPosition = window.innerWidth;
+  
+  const speed = 1; // px per frame
+  
+  function step() {
+    scrollPosition -= speed;
+    
+    // Reset when first copy is fully scrolled
+    if (scrollPosition <= -marquee.scrollWidth / 2) {
+      scrollPosition = 0;
+    }
+    
+    marquee.style.transform = `translateX(${scrollPosition}px)`;
+    requestAnimationFrame(step);
+  }
+  step();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.innerWidth <= 768) {
+    startMarquee();
+  }
+});
+</script>
+<script>
+  (function () {
+  const slideshow = document.getElementById('featuredSlideshow');
+  if (!slideshow) return;
+
+  const slides = Array.from(slideshow.querySelectorAll('.slide'));
+  const buttons = Array.from(document.querySelectorAll('.slide-btn'));
+  let current = 0;
+  let isTransitioning = false;
+  let autoTimer = null;
+
+  function goToSlide(index) {
+    if (index === current || isTransitioning) return;
+    isTransitioning = true;
+
+    buttons[current].textContent = String(current + 1);
+    buttons[current].classList.remove('active');
+    buttons[index].textContent = '[' + (index + 1) + ']';
+    buttons[index].classList.add('active');
+
+    slides[current].classList.remove('active');
+    slides[index].classList.add('active');
+    current = index;
+
+    setTimeout(function () { isTransitioning = false; }, 600);
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(function () {
+      goToSlide((current + 1) % slides.length);
+    }, 8000);
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      goToSlide(parseInt(btn.dataset.slide, 10));
+      startAuto();
+    });
+  });
+
+  startAuto();
+})();
+</script>

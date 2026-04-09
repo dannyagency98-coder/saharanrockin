@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons for share popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --podcast-primary-bg: #1a1a1a;
+            --podcast-secondary-bg: #2a2a2a;
+            --podcast-text-color: #e0e0e0;
+            --podcast-link-color: #c933a0;
+            --podcast-border-color: #444;
+            --podcast-button-bg: #444;
+            --podcast-button-hover-bg: #555;
+            --podcast-play-button-bg: #90ee90; /* Light green */
+            --podcast-play-button-text: #1a1a1a;
+
+            /* Share Popup Specific Colors (Copied from podcast-page) */
+            --share-popup-bg: #1f1f1f;
+            --share-popup-border: #666;
+            --share-popup-text: #e0e0e0;
+            --share-popup-input-bg: #333;
+            --share-popup-input-border: #555;
+            --share-popup-copy-button-bg: #c933a0;
+            --share-popup-copy-button-text: #1a1a1a;
+            --share-popup-icon-button-bg: #3a3a3a;
+            --share-popup-icon-button-hover-bg: #5a5a5a;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--podcast-primary-bg) !important;
+            color: var(--podcast-text-color);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .podcast-container { /* Changed from .container */
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Header Navigation */
+        .podcast-header-nav { /* Changed from .header-nav */
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .podcast-header-nav a { /* Changed from .header-nav a */
+            color: var(--podcast-link-color);
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .podcast-header-nav span { /* Changed from .header-nav span */
+            color: var(--podcast-text-color);
+            margin-right: 10px;
+        }
+
+        /* Main Content Section */
+        .podcast-main-content { /* Changed from .main-content */
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .podcast-left-panel { /* Changed from .left-panel */
+            flex: 2; /* Takes more space */
+            min-width: 300px; /* Minimum width for the left panel */
+        }
+
+        .podcast-right-panel { /* Changed from .right-panel */
+            flex: 1; /* Takes less space */
+            min-width: 250px; /* Minimum width for the right panel */
+            display: flex;
+            justify-content: flex-end; /* Aligns content to the right */
+            max-height: 20em;
+        }
+
+        .podcast-title-box {
+            background-color: var(--podcast-secondary-bg);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--podcast-border-color);
+        }
+
+        .podcast-title-box h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--podcast-text-color);
+        }
+      .podcast-title-box h1 {
+        font-family: 'MonoBold', monospace;
+      }
+
+        .podcast-title-box p {
+            margin: 5px 0 0;
+            font-size: 1em;
+            color: #fff;
+  } p {
+          font-family: 'MonoLight', monospace;
+        }
+
+        .podcast-description {
+          line-height: 1.6;
+          margin-bottom: 20px;
+          color: #fff;
+          font-family: 'MonoLight', monospace;
+          font-size: 0.95em; /* Slightly smaller font */
+}
+
+        .podcast-action-buttons { /* Changed from .action-buttons */
+            display: flex;
+            gap: 20px;
+        }
+
+        .podcast-action-button { /* Changed from .action-button */
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            color: var(--podcast-text-color);
+        }
+
+        .podcast-play-button {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+        }
+
+        .podcast-share-button { /* Changed from .share-button */
+            background-color: var(--podcast-button-bg);
+        }
+
+        .podcast-share-button:hover { /* Changed from .share-button:hover */
+            background-color: var(--podcast-button-hover-bg);
+        }
+
+        .podcast-action-button svg { /* Changed from .action-button svg */
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .podcast-image {
+            width: 100%; /* Make image fluid */
+            max-width: 400px; /* Max width for the image */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            border: 1px solid var(--podcast-border-color);
+        }
+
+        /* Episodes Section */
+        .podcast-episodes-section h2 { /* Changed from .episodes-section h2 */
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--podcast-border-color);
+            padding-bottom: 10px;
+          color: #fff;
+        }
+
+        .podcast-episode-grid { /* Changed from .episode-grid */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 20px;
+        }
+
+        .podcast-episode-card { /* Changed from .episode-card */
+            background-color: var(--podcast-secondary-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid var(--podcast-border-color);
+            text-decoration: none; /* Remove underline from link */
+            color: inherit; /* Inherit text color */
+            display: block; /* Make the entire card clickable */
+            text-decoration: none;
+        }
+
+        .podcast-episode-card:hover { /* Changed from .episode-card:hover */
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+
+        .podcast-episode-thumbnail { /* Changed from .episode-thumbnail */
+            width: 100%;
+            height: 180px; /* Fixed height for thumbnails */
+            object-fit: cover;
+            display: block;
+        }
+
+        .podcast-episode-info { /* Changed from .episode-info */
+            padding: 15px;
+        }
+
+        .podcast-episode-number { /* Changed from .episode-number */
+            background-color: var(--podcast-primary-bg);
+            color: var(--podcast-link-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .podcast-episode-title { /* Changed from .episode-title */
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 0 0 5px;
+            color: var(--podcast-text-color);
+        }
+
+        .podcast-episode-meta { /* Changed from .episode-meta */
+            font-size: 0.9em;
+            color: #ccc;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .podcast-episode-meta span { /* Changed from .episode-meta span */
+            display: block;
+        }
+
+        /* Share Popup Styles (Copied from podcast-page) */
+        .share-popup-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85); /* Slightly less opaque than PDF modal */
+            justify-content: center;
+            transition: opacity 0.2s ease;
+            align-items: center;
+        }
+
+        .share-popup-content {
+            background: var(--share-popup-bg);
+            color: var(--share-popup-text);
+            border: 1px solid var(--share-popup-border);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 400px; /* Limit width for better appearance */
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-family: 'Inter', sans-serif; /* Ensure Inter font for the popup */
+        }
+
+        .share-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--podcast-subtle-border);
+        }
+
+        .share-header p {
+            margin: 0;
+        }
+        .pdf-viewer-modal {
+            display: none;
+         }
+        .share-close {
+            background: none;
+            border: none;
+            color: var(--share-popup-text);
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+            border-radius: 4px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .share-close:hover {
+            background-color: var(--podcast-button-hover-bg);
+            color: var(--podcast-link-color);
+        }
+
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 10px;
+        }
+
+        .share-options button {
+            background-color: var(--share-popup-icon-button-bg);
+            color: var(--share-popup-text);
+            border: 1px solid var(--share-popup-input-border);
+            border-radius: 6px;
+            padding: 10px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Using podcast-button-shadow equivalent */
+        }
+
+        .share-options button:hover {
+            background-color: var(--share-popup-icon-button-hover-bg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .share-options button i {
+            font-size: 2em;
+            margin-bottom: 5px;
+            color: var(--podcast-link-color); /* Icons in light green */
+        }
+
+        .share-options button p {
+            margin: 0;
+        }
+
+        .share-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .share-input input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--share-popup-input-border);
+            background-color: var(--share-popup-input-bg);
+            color: var(--share-popup-text);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            outline: none;
+        }
+
+        .share-input input:focus {
+            border-color: var(--podcast-link-color);
+            box-shadow: 0 0 0 2px rgba(144, 238, 144, 0.2);
+        }
+
+        #copyShare {
+            background-color: var(--share-popup-copy-button-bg);
+            color: var(--share-popup-copy-button-text);
+            border: none;
+            border-radius: 6px;
+            padding: 10px 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Using podcast-button-shadow equivalent */
+        }
+
+        #copyShare:hover {
+            background-color: #c933a0; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .podcast-main-content { /* Changed from .main-content */
+                flex-direction: column; /* Stack panels on small screens */
+            }
+
+            .podcast-title-box h1 {
+               font-size: 1.75em !important;  
+            }
+            .podcast-right-panel { /* Changed from .right-panel */
+                justify-content: center; /* Center image on small screens */
+              display: none;
+            }
+
+            .podcast-title-box h1 {
+                font-size: 1.8em;
+            }
+
+            .podcast-episode-grid { /* Changed from .episode-grid */
+                grid-template-columns: 1fr; /* Single column on very small screens */
+            }
+
+            /* Share Popup Responsive Adjustments */
+            .share-popup-content {
+                margin: 10px;
+                width: calc(100% - 20px);
+            }
+            .share-options {
+                grid-template-columns: 1fr; /* Stack buttons on very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="podcast-container">
+        <!-- Main Content Section -->
+        <div class="podcast-main-content">
+            <div class="podcast-left-panel">
+                <div class="podcast-title-box">
+                    <h1>Broadcasts from E-77<img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/eyes_red.gif?v=1766475017" alt="Red eyes animation" loading="lazy" style="height: 40px; width: 40px; vertical-align: middle; display: inline;"></h1>
+                <p id="episode-count">--- Episodes</p>
+                </div>
+                <p class="podcast-description">
+                    Welcome to the official feed for Exodus of Time, a surreal sci-fi manga series from the world of E-77. Here you'll find trailers, animated shorts, teasers, and rare transmissions revealing what’s next for the story. 
+From early looks at upcoming chapters to behind-the-scenes glimpses into the creation process, every signal broadcast here brings you deeper into the chaos, mystery, and momentum of Exodus of Time. 
+This is the front line of the rebellion, hit play and don’t look back.
+
+                     
+                </p>
+<div class="podcast-action-buttons">
+    <a href="https://www.youtube.com/watch?v=m-5ZAcoZ93w" target="_blank" class="podcast-action-button podcast-play-button">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/unnamed_1_49716048-09a0-438d-9e07-24f88675b117.png?v=1756264422" alt="Play" class="action-icon">
+    </a>
+    <a href="" class="podcast-action-button podcast-share-button" data-file-link="https://www.youtube.com/@saharanrockin/videos" id="mainShareButton">
+        <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/sharebutton.png?v=1756408269" alt="Share" class="action-icon">
+    </a>
+</div>
+
+<style>
+.action-icon {
+    width: 120px;
+    height: 38px;s
+    display: block;
+}
+</style>
+
+
+            </div>
+            <div class="podcast-right-panel">
+                <!-- Placeholder for the main podcast image -->
+                <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/WatchPFP_nopink.gif?v=1766475087" alt="Exodus of Time manga panel - Gero vs Cyclops fight" class="podcast-image">
+            </div>
+        </div>
+
+        <!-- Episodes Section -->
+        <div class="podcast-episodes-section">
+            <h2 style="font-family: 'Akira Expanded', sans-serif;">Episodes</h2>
+            <div class="podcast-episode-grid dynamic-hotlines">
+                
+                <!-- Episode Card 1 (Example - you can add more) -->
+                <a href="https://www.youtube.com/watch?v=m-5ZAcoZ93w" class="podcast-episode-card">
+  <img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/IMG_0974.jpg?v=1766270029" alt="Exodus of Time manga panel - Gero vs Cyclops fight" class="podcast-episode-thumbnail">
+  <div class="podcast-episode-info">
+    <span class="podcast-episode-number">#1</span>
+    <h3 class="podcast-episode-title">EXODUS OF TIME TRAILER</h3>
+    <div class="podcast-episode-meta">
+      <span>00m 37s</span>
+     <span id="view-count">Loading...</span>
+    </div>
+    <div class="podcast-episode-meta">
+      <span></span>
+      <span>Grim is dead. His bounty remains. The signal is breaking. Chapter 1: Dreaming and Scheming, Gero finds himself caught in the aftermath of his father’s legacy, a war-brewing bounty, and a village haunted by secrets.</span>
+    </div> 
+  </div>
+</a>
+     </div>
+   </div>
+ </div>
+
+    <!-- Share Popup Modal (Copied from podcast-page) -->
+    <div id="sharePopupModal" class="share-popup-modal">
+        <div class="share-popup-content">
+            <div class="share-header">
+                <p>SHARE</p>
+                <button class="share-close">&times;</button>
+            </div>
+            <div class="share-options">
+                <button data-share="whatsapp">
+                    <i class="bi bi-whatsapp"></i>
+                    <p>Whatsapp</p>
+                </button>
+                <button data-share="twitter">
+                    <i class="bi bi-twitter-x"></i>
+                    <p>X</p>
+                </button>
+                <button data-share="facebook">
+                    <i class="bi bi-facebook"></i>
+                    <p>Facebook</p>
+                </button>
+                <button data-share="reddit">
+                    <i class="bi bi-reddit"></i>
+                    <p>Reddit</p>
+                </button>
+            </div>
+            <div class="share-input">
+                <input type="text" readonly="true" id="shareLinkInput">
+                <button id="copyShare">COPY</button>
+            </div>
+        </div>
+    </div>
+
+ <div class="mobile-footer">
+<div class="flex">
+<a href="/">Privacy</a>
+<a href="/">TOS</a>
+<a href="/">Help</a>
+</div>
+<p style="color: #fff; text-align: center; font-size: .8em">
+  &copy; <span id="currentYear"></span> Saharan Rockin LLC, All rights reserved
+</p>
+
+<script>
+  const year = new Date().getFullYear();
+  document.getElementById('currentYear').textContent = year;
+  console.log("Current year:", year);
+</script>
+<div class="socials">
+<a href="https://www.instagram.com/saharanrockin/"><i class="bi bi-instagram"></i></a>
+<a href="https://www.youtube.com/@saharanrockin"><i class="bi bi-youtube"></i></a>
+<a href="https://saharanrockin.newgrounds.com/"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/png-transparent-newground-icon-portal-newgrounds-logo-website-music-tank-ico-angle-monochrome-sports-equipment-removebg-preview.png?v=1752170018" style="width: 2em"></a>
+<a href="https://x.com/saharanrockin"><i class="bi bi-twitter"></i></a>
+<a href="https://www.tiktok.com/@saharanrockin"><i class="bi bi-tiktok"></i></a>
+</div>
+</div>
+<div id="iframe-container" style="display:none;"></div>
+  <style>
+.mobile-footer {
+background: #0a0a0a;
+color: #c8c8c8;
+text-align: center;
+padding: 2em 0;
+display: none;
+}
+.mobile-footer h2 {
+color: #fff;
+}
+@media(max-width: 40em) {
+.mobile-footer {
+display: block !important;
+}
+}
+h1 {
+font-weight: bold !important;
+}
+button {
+font-size: 12px;
+font-weight: bold;
+}
+</style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Share Popup elements
+            const mainShareButton = document.getElementById('mainShareButton');
+            // Note: There are no individual track share buttons in this HTML, so trackShareButtons is not needed here.
+            const sharePopupModal = document.getElementById('sharePopupModal');
+            const sharePopupClose = sharePopupModal.querySelector('.share-close');
+            const shareLinkInput = document.getElementById('shareLinkInput');
+            const copyShareButton = document.getElementById('copyShare');
+            const socialShareButtons = sharePopupModal.querySelectorAll('.share-options button');
+
+            let currentShareLink = ''; // To store the link being shared
+
+            // --- Share Popup Functions ---
+            const openSharePopup = (link) => {
+                currentShareLink = link;
+                shareLinkInput.value = link;
+                sharePopupModal.style.display = 'flex';
+            };
+
+            const closeSharePopup = () => {
+                sharePopupModal.style.display = 'none';
+                currentShareLink = ''; // Clear the link
+                shareLinkInput.value = ''; // Clear the input
+            };
+
+            // Event listener for the main SHARE button
+            if (mainShareButton) {
+                mainShareButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    // Set the specific share URL for this page
+                    const specificShareLink = "https://saharanrockin.com#1";
+                    openSharePopup(specificShareLink);
+                });
+            }
+
+            // Close share popup when close button is clicked
+            sharePopupClose.addEventListener('click', closeSharePopup);
+
+            // Close share popup when clicking outside of the content (on the modal background)
+            sharePopupModal.addEventListener('click', (event) => {
+                if (event.target === sharePopupModal) {
+                    closeSharePopup();
+                }
+            });
+
+            // Optional: Close share popup with Escape key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && sharePopupModal.style.display === 'flex') {
+                    closeSharePopup();
+                }
+            });
+
+            // Copy link to clipboard
+            copyShareButton.addEventListener('click', () => {
+                shareLinkInput.select();
+                try {
+                    document.execCommand('copy');
+                    // Optionally, provide a visual feedback to the user
+                    copyShareButton.textContent = 'COPIED!';
+                    setTimeout(() => {
+                        copyShareButton.textContent = 'COPY';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+            });
+
+            // Social Share functionality
+            socialShareButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const shareType = button.dataset.share;
+                    let shareUrl = '';
+                    switch (shareType) {
+                        case 'whatsapp':
+                            shareUrl = `https://wa.me/?text=${encodeURIComponent(currentShareLink)}`;
+                            break;
+                        case 'twitter':
+                            shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentShareLink)}`;
+                            break;
+                        case 'facebook':
+                            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentShareLink)}`;
+                            break;
+                        case 'reddit':
+                            shareUrl = `https://www.reddit.com/submit?url=${encodeURIComponent(currentShareLink)}`;
+                            break;
+                        default:
+                            console.error('Unknown share type:', shareType);
+                            return;
+                    }
+
+                    if (shareUrl) {
+                        console.log('Attempting to open share URL:', shareUrl); // Debugging: Log the URL being opened
+                        // Open the social media sharing dialog in a new, secure tab
+                        window.open(shareUrl, '_blank', 'noopener noreferrer');
+                    }
+                    closeSharePopup(); // Close popup after sharing
+                });
+            });
+        });
+    </script>
+    <script>
+function updateViewCount() {
+const el = document.getElementById("view-count");
+if (!el) {
+// Try again until the card exists
+setTimeout(updateViewCount, 50);
+return;
+}
+
+const apiKey = "AIzaSyCAISfMgo94RmbVGeO6veUrxXWzWGgfwkg";
+const videoId = "m-5ZAcoZ93w";
+
+fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoId}&key=${apiKey}`)
+.then(res => res.json())
+.then(data => {
+el.innerText = `${data.items[0].statistics.viewCount} VIEWS`;
+});
+}
+
+updateViewCount();
+</script>
+
+
+<script>
+function updateEpisodeCount() {
+  const el = document.getElementById("episode-count");
+  if (!el) {
+    setTimeout(updateEpisodeCount, 50);
+    return;
+  }
+
+  const apiKey = "AIzaSyCAISfMgo94RmbVGeO6veUrxXWzWGgfwkg";
+  const channelHandle = "@saharanrockin";
+
+  // Use the same approach as your view counter - direct channel statistics call
+  // First we need to get the channel ID from the handle
+  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${channelHandle}&type=channel&maxResults=1&key=${apiKey}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log("Search result:", data);
+      
+      if (data.items && data.items.length > 0) {
+        const channelId = data.items[0].snippet.channelId;
+        console.log("Channel ID found:", channelId);
+        
+        // Now fetch the channel statistics
+        return fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`);
+      } else {
+        throw new Error("Channel not found");
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Channel stats:", data);
+      
+      if (data.items && data.items.length > 0) {
+        const videoCount = data.items[0].statistics.videoCount;
+        el.innerText = `${videoCount} Episodes`;
+        console.log("Video count:", videoCount);
+      } else {
+        el.innerText = "35 Episodes";
+      }
+    })
+    .catch(err => {
+      console.error("Error:", err);
+      el.innerText = "35 Episodes";
+    });
+}
+
+updateEpisodeCount();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+ <style>
+    @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+          scrollbar-width: none;
+    -ms-overflow-style: none;
+    }
+    *::-webkit-scrollbar {
+      display: none !important;
+    }
+    body {
+      margin: 0;
+      background: #0a0a0a !important;
+      color: white;
+      user-select: none;
+      overflow-y: scroll;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .section-sections--18343536066710__custom_liquid_mdhLUA-padding {
+    padding: 0 !important;
+}
+    .section-template--18343535575190__custom_liquid_dGk3j3-padding {
+    padding: 0;
+}
+    a {
+      color: #2600e6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+
+    /* Layout */
+    .lourd-container {
+      max-width: 100%;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #0a0a0a;
+    }
+        @media (min-width: 768px) {
+      .lourd-container {
+        flex-direction: row;
+      }
+      marquee {
+        position: relative !important;
+        bottom: 0 !important;
+      }
+    }
+
+    /* Section container */
+    .section {
+      background-color: #111;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+    }
+    .section-header {
+      background-color: #111;
+      border-bottom: 1px solid #222;
+      padding: 6px 8px;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section-header button {
+      background-color: #111;
+      border: 1px solid #222;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: "Share Tech Mono", monospace;
+    }
+    .section-header button:hover {
+      background-color: #222;
+    }
+    .section-content {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .main-content *::-webkit-scrollbar {
+      display: none;
+    }
+    
+  </style>
+
+  <!-- custom style -->
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+}
+.page-width {
+    margin: 0 auto ! important;
+    padding: 0 ! important;
+}
+.bottom-footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #050206;
+    padding: 0 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    color: #fff;
+    height: 4em;
+    z-index: 9999; /* make sure it’s higher than product cards */
+    pointer-events: auto; /* ensure it catches clicks */
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #f0f0f0;
+    border-right: 1px solid #333;
+    height: 100%;
+    width: 100%;
+    pointer-events: auto; /* default, but explicitly set */
+    z-index: 10000; /* just to be safe */
+}
+}
+
+.nav-item i {
+    font-size: 20px;
+}
+@media (min-width: 768px) {
+    .bottom-footer {
+        display: none;
+    }
+  .d-none {
+        display: none !important;
+
+  }
+}
+    @media (max-width: 48em) {
+      .top-nav {
+        display: none;
+      }
+      .m-none {
+    display: none !important;
+}
+     .grid {
+        gap: 1.5em ! important;
+    }
+      .featured-video-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+      .featured-video-container {
+        height: 60vh;
+      }
+      .mobile-header {
+        position: sticky;
+        top: 0;
+        background: #0a0a0a;
+        z-index: 999;
+      }
+    }
+    .about-bar * {
+      color: #FB0205;
+    }
+    .about-bar p {
+      color: #C8C8C8 !important;
+    }
+     @media screen and (min-width: 990px) {
+    .grid--4-col-desktop .grid__item {
+        width: calc(33.3% - var(--grid-desktop-horizontal-spacing) * 3 / 4) !important;
+        max-width: calc(33.3% - var(--grid-desktop-horizontal-spacing) * 3 / 4) !important;
+    }
+}
+   .card--card, .card--standard .card__inner {
+     height: 20em;
+   }
+        .section-merch-product-grid-padding {
+        background: #0a0a0a;
+        }
+    .full-unstyled-link {
+      color: #eb36cd !important;
+      font-size: 16px;
+    }
+     .full-unstyled-link:hover {
+      text-decoration: none !important;
+     }
+
+    li.grid__item {
+    border: 1px solid #333;
+    border-radius: .2em;
+    overflow: hidden;
+    padding: .2em;
+}
+   li.grid__item:hover {
+    border: 1px solid #eb36cd;
+   }
+
+    .active-nav {
+      background: #363639;
+    }
+    aside#main-collection-filters {
+    display: none !important;
+}
+    .price>* {
+    display: inline-block;
+    vertical-align: top;
+    color: #fff;
+}
+  </style>
+ {% section 'merch-product-grid' %}
+    <div class="subscription-form-wrapper" style="background:#0a0a0a; padding-top: 5.5rem; padding:2.5rem; text-align:left; width:102%; margin:0 auto; box-sizing:border-box;">
+  {% form 'customer', class: 'subscription-form' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+
+   <h1 style="color:#fff; font-size: 26px;">Stay Alert With New Merch Drops!</h1>
+
+    <input
+      type="text"
+      name="contact[first_name]"
+      placeholder="Your Name"
+      required
+    >
+
+    <input
+      type="email"
+      name="contact[email]"
+      placeholder="rae@e77.network"
+      required
+    >
+
+    <button type="submit">Subscribe</button>
+
+    {% if form.posted_successfully? %}
+      <p style="color:#0f0; margin-top:1rem;">Subscription successful! Welcome to the E-77 Network!</p>
+    {% endif %}
+
+    {% if form.errors %}
+      <p style="color:#f00; margin-top:1rem;">
+        {{ form.errors | default_errors }}
+    </p>
+    {% endif %}
+  {% endform %}
+</div>
+
+<!-- Script to clean Shopify form query parameters after submission -->
+<script>
+  if (window.history.replaceState) {
+    const url = window.location.href.split('?')[0].split('#')[0];
+    window.history.replaceState({}, document.title, url);
+  }
+</script>
+
+<div class="mobile-footer">
+
+<div class="flex">
+<a href="/">Privacy</a>
+<a href="/">TOS</a>
+<a href="/">Help</a>
+</div>
+<p style="color: #fff; text-align: center; font-size: .8em">
+  &copy; <span id="currentYear"></span> Saharan Rockin LLC, All rights reserved
+</p>
+
+<script>
+  const year = new Date().getFullYear();
+  document.getElementById('currentYear').textContent = year;
+  console.log("Current year:", year);
+</script>
+<div class="socials">
+<a href="https://www.instagram.com/saharanrockin/"><i class="bi bi-instagram"></i></a>
+<a href="https://www.youtube.com/@saharanrockin"><i class="bi bi-youtube"></i></a>
+<a href="https://saharanrockin.newgrounds.com/"><img src="https://cdn.shopify.com/s/files/1/0665/5849/2822/files/png-transparent-newground-icon-portal-newgrounds-logo-website-music-tank-ico-angle-monochrome-sports-equipment-removebg-preview.png?v=1752170018" style="width: 2em"></a>
+<a href="https://x.com/saharanrockin"><i class="bi bi-twitter"></i></a>
+<a href="https://www.tiktok.com/@saharanrockin"><i class="bi bi-tiktok"></i></a>
+</div>
+</div>
+
+</div>
+<div id="iframe-container" style="display:none;"></div>
+  <style>
+.mobile-footer {
+background: #0a0a0a;
+color: #c8c8c8;
+text-align: center;
+padding: 2em 0;
+display: none;
+}
+.mobile-footer h2 {
+color: #fff;
+}
+@media(max-width: 40em) {
+.mobile-footer {
+display: block !important;
+}
+}
+h1 {
+font-weight: bold !important;
+}
+button {
+font-size: 12px;
+font-weight: bold;
+}
+</style>
